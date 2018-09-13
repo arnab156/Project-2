@@ -2,13 +2,42 @@ var db = require("../models");
 
 module.exports = function(app) {
   // Load index page
-  app.get("/", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.render("index", {
-        msg: "Welcome!",
-        examples: dbExamples
+  app.get("/customer/:id", function(req, res) {
+    
+    db.customer.findOne({
+      where: {
+        customerId: req.params.id
+        }
+    }).then(function(customer) {
+      res.render("customer", {
+        note: "Welcome!",
+        customerFN: customer.firstName,
+
       });
     });
+
+    db.appointment.findOne({ 
+      where: {
+        customerId: req.params.id
+        }
+    }).then(function(appointment) {
+        res.render("customer", {
+          msg: "You have the following appointments with us: ",
+          service: appointment.service,
+          dateTime: appointment.dateTime,
+          // serviceprovider name from ID
+        });
+
+        db.serviceprovider.findOne({
+          where:{
+            id : appointment.serviceProviderId
+          }
+        }).then(function(serviceprovidername){
+          res.render("customer", {
+            selectedStylist: serviceprovidername.firstName
+          });
+        });
+      });
   });
 
   // Load example page and pass in an example by id
