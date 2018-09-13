@@ -1,33 +1,116 @@
-<div id="home">
-  <div class="container">
-    <div class="row">
-      <div class="col-8 offset-2">
-        <h1>{{msg}}</h1>
-        <h2>This is our Home Page!</h2>
-        <form class="clearfix mb-4" action="POST">
-          <div class="form-group">
-            <label for="example-text">Example Text</label>
-            <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
-          </div>
-          <div class="form-group">
-            <label for="example-description">Example Description</label>
-            <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
-          </div>
-          <button id="submit" class="btn btn-primary float-right">Submit</button>
-        </form>
-        <h3>Examples:</h3>
-        <ul id="example-list" class="list-group">
-          {{#each examples}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button>
-          </li>
-          {{/each}}
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
+    <div class = "container"> 
+        <div id = "left">
+            <h1>ADAM FrontDesk!</h1>
+            <!-- <p> Welcome to ADAM FrontDesk University! Please log in to go to see, manage and create appointments</p> -->
+        </div> 
+        <div id = "right"> 
+          <ul>
+            <li>
+              <img src = "https://www.designfreelogoonline.com/wp-content/uploads/2014/12/00546-Square-levels-logo-design-free-logos-online-02.png"> 
+              <span>
+                  <strong>Manager</strong>
+                  <p> Forgot Password? Contact Front Desk</p>
+              </span>
+            </li>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/index.js"></script>
+            <li id="customerBtn"> 
+              <img src = "https://www.designfreelogoonline.com/wp-content/uploads/2014/12/00546-Square-levels-logo-design-free-logos-online-02.png"> 
+              <span>
+                  <strong>Customer</strong>
+                  <p><a href="#ex1" rel="modal:open">Log in & Register</a></p>
+              </span>
+            </li>
+
+            <li>
+              <img src = "https://www.designfreelogoonline.com/wp-content/uploads/2014/12/00546-Square-levels-logo-design-free-logos-online-02.png"> 
+              <span>
+                  <strong>Front Desk</strong>
+                  <p> Forgot Password? Contact Front Desk</p>
+              </span>
+            </li>
+          </ul>
+        </div> 
+            
+
+        <!-- Modal HTML embedded directly into document -->
+        <div id="ex1" class="modal modal-style">
+            
+            <form id="loginForm" class = "form">
+                    <p>LOG IN HERE.</p>
+                <div>
+                    <label for="uname"><b>Username</b></label>
+                    <input type="text" placeholder="Enter Username" name="uname" required>
+                
+                    <label for="psw"><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="psw" required>
+                        
+                    <button type="submit" id="customerLogin">Login</button>
+                    <label>
+                        <input type="checkbox" checked="checked" name="remember"> Remember me
+                    </label>
+                 </div>
+            </form>
+            <!-- <a href="#" rel="modal:close">Close</a> -->
+            <p><button id="registerBtn">Register Here</button></p>
+
+            
+            <form id="registerForm" class = "form">
+                    <div>
+                        <label for="fname"><b>First Name</b></label>
+                        <input type="text" placeholder="Enter First Name" name="fname" required>
+
+                        <label for="lname"><b>Last Name</b></label>
+                        <input type="text" placeholder="Enter Last Name" name="lname" required>
+
+                        <label for="phoneNum"><b>Phone Number</b></label>
+                        <input type="text" placeholder="+19997776666" name="phoneNum" required>
+
+                        <label for="userName"><b>Email (Username)</b></label>
+                        <input type="email" placeholder="adam@adamfrontdesk.com" name="userName" required>
+
+                        <label for="psw"><b>Password</b></label>
+                        <input type="password" placeholder="Enter Password" name="psw" required>
+
+                        <label for="add1"><b>Address Line 1</b></label>
+                        <input type="password" placeholder="Address Line 1" name="add1" required>
+
+                        <label for="add2"><b>Address Line 2</b></label>
+                        <input type="text" placeholder="Address Line 2" name="add2" required>
+
+                        <label for="city"><b>City</b></label>
+                        <input type="text" placeholder="City" name="city" required>
+
+                        <label for="state"><b>State Code</b></label>
+                        <input type="text" placeholder="IL" name="state" required>
+
+                        <label for="zip"><b>ZIP</b></label>
+                        <input type="text" placeholder="556677" name="zip" required>
+                            
+                        <button type="submit" id="completeRegisterBtn">Submit</button>
+                        <button type="submit" id="cancelRegistrationBtn">Cancel</button>
+                     </div>
+                </form>
+
+        </div>
+    </div>
+
+<script>
+  $( document ).ready(function() {
+    $("#registerForm").hide();
+  });
+  $("#registerBtn").click(function (){
+    $("#loginForm").hide();
+    $("#registerBtn").hide();
+
+    $("#registerForm").show(); 
+  });
+  $("#completeRegisterBtn").click(function (){
+    $("#loginForm").show();
+    $("#registerBtn").show();
+    $("#registerForm").hide(); 
+  });
+  $("#cancelRegistrationBtn").click(function (){
+    location.reload();
+  });
+</script>
+
