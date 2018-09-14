@@ -1,4 +1,5 @@
 var db = require("../models");
+var passport = require("passport");
 
 module.exports = function(app) {
   // Get all examples
@@ -13,6 +14,16 @@ module.exports = function(app) {
     db.customer.create(req.body).then(function(testdb) {
       res.json(testdb);
     });
+  });
+
+
+  app.post("/api/customerlogin", passport.authenticate('local'),function(req,res){
+     // console.log (req.user);
+     if(req.user) {
+       //valid
+       res.json()
+     } else { // invalid }
+    }
   });
 
   // Delete an example by id

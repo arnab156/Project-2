@@ -2,6 +2,8 @@ require("dotenv").config();
 var express = require("express");
 var bodyParser = require("body-parser");
 var exphbs = require("express-handlebars");
+var session = require("express-session");
+var passport = require("passport");
 var mysql = require('mysql2');
 // var path= require('path');
 
@@ -14,7 +16,10 @@ var PORT = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static("public"));
-// app.use(express.static(path.join(__dirname, "public/js")));
+app.use(session({ secret: "cats" }));
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 // Handlebars
 app.engine(

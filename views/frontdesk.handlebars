@@ -1,5 +1,5 @@
 <div class="card_fd">
-    <img class = "img_fd" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-BqTNaupy8yjdKdQ7_S474SaAfSRnZ3emD03p9GPUw_02yhgC" alt="Avatar">
+    <img class = "img_fd" src="https://pixel.nymag.com/imgs/daily/vulture/2018/09/05/mac-miller/04-mac-miller-2.w570.h712.jpg" alt="Avatar">
     <div class="container_fd">
         <h4><b>{{stylist_firstname}}</b></h4> 
         <p>{{title}}</p> 
@@ -8,8 +8,63 @@
 </div>
 
 <div class = "footer">
- <button class="button_fd">Client List</button>
- <button class="button_fd">Service List</button>
- <button class="button_fd">Log-out</button>
+ <a href="#ex2" rel="modal:open"><button class="btn" id="viewClientsBtn"> Clients</button></a>;
+ <a href="#ex1" rel="modal:open"><button class="btn" id="viewServiceBtn"> Services</button></a>;
+ <a href="#ex3" rel="modal:open"><button class="btn" id="addProviderBtn"> Add Provider</button></a>;
+ <a href="#ex3" rel="modal:open"><button class="btn" id="addServiceBtn"> Add Service</button></a>;
+ <p><a>Log out</a></p>
 </div>
+
+
+
+  <div id="ex3" class="modal modal-style">
+    <form id="addProviderForm" class="form">
+      <p>ADD PROVIDER HERE.</p>
+      <div>
+        <label for="fname"><b>First Name</b></label>
+        <input type="text" placeholder="Enter First Name" name="fname" id="firstName" required>
+
+        <label for="lname"><b>Last Name</b></label>
+        <input type="text" placeholder="Enter Last Name" name="lname" id="lastName" required>
+
+        <label for="title"><b>Title</b></label>
+        <input type="text" placeholder="Hair Stylist" name="title" id="title" required>
+
+        <label for="add1"><b>Address Line 1</b></label>
+        <input type="text" placeholder="Address Line 1" name="add1" id="address_1" required>
+
+        <label for="add2"><b>Address Line 2</b></label>
+        <input type="text" placeholder="Address Line 2" name="add2" id="address_2" required>
+
+        <label for="city"><b>City</b></label>
+        <input type="text" placeholder="City" name="city" id="city" required>
+
+        <label for="state"><b>State Code</b></label>
+        <input type="text" placeholder="IL" name="state" id="state" required>
+
+        <label for="zip"><b>ZIP</b></label>
+        <input type="text" placeholder="556677" name="zip" id="zip" required>
+
+        <label for="phone"><b>Phone</b></label>
+        <input type="text" placeholder="556677444" name="phone" id="phone" required>
+        
+        <label for="email"><b>Email (Username)</b></label>
+        <input type="email" placeholder="adam@adamfrontdesk.com" name="email" id="email" required>
+
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" id="password" required>
+
+        <button type="submit" id="providerAddBtn">Submit</button>
+        <button type="button" id="providerCancelBtn">Cancel</button>
+      </div>
+    </form>
+{{!-- //add service form --}}
+  </div>
    
+   <script>
+
+    $(document).ready(function () {
+    
+    // add to service provider
+     });
+   </script>

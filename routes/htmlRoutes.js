@@ -3,10 +3,9 @@ var db = require("../models");
 module.exports = function(app) {
   // Load index page
   app.get("/customer/:id", function(req, res) {
-    
     db.customer.findOne({
       where: {
-        customerId: req.params.id
+        id: req.params.id
         }
     }).then(function(customer) {
       res.render("customer", {
@@ -16,28 +15,28 @@ module.exports = function(app) {
       });
     });
 
-    db.appointment.findOne({ 
-      where: {
-        customerId: req.params.id
-        }
-    }).then(function(appointment) {
-        res.render("customer", {
-          msg: "You have the following appointments with us: ",
-          service: appointment.service,
-          dateTime: appointment.dateTime,
-          // serviceprovider name from ID
-        });
+    // db.appointment.findOne({ 
+    //   where: {
+    //     id: req.params.id
+    //     }
+    // }).then(function(appointment) {
+    //     res.render("customer", {
+    //       msg: "You have the following appointments with us: ",
+    //       service: appointment.service,
+    //       dateTime: appointment.dateTime,
+    //       // serviceprovider name from ID
+    //     });
 
-        db.serviceprovider.findOne({
-          where:{
-            id : appointment.serviceProviderId
-          }
-        }).then(function(serviceprovidername){
-          res.render("customer", {
-            selectedStylist: serviceprovidername.firstName
-          });
-        });
-      });
+    //     db.serviceprovider.findOne({
+    //       where:{
+    //         id : appointment.serviceProviderId
+    //       }
+    //     }).then(function(serviceprovidername){
+    //       res.render("customer", {
+    //         selectedStylist: serviceprovidername.firstName
+    //       });
+    //     });
+    //   });
   });
 
   // Load example page and pass in an example by id
@@ -60,4 +59,18 @@ module.exports = function(app) {
   app.get("/", function(req, res) {
     res.render("index");
   });
-};
+
+
+
+
+  app.get("/frontdesk", function(req, res) {
+    res.render("frontdesk");
+
+//for each create HTML card and append picture, name on it
+
+//for each service providor, append html of availability
+  });
+
+
+
+};//end of the module.exports
