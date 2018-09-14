@@ -1,30 +1,90 @@
 // Get references to page elements
+var $firstname = $("#firstname");
+var $lastname = $("#lastname");
+var $phoneNum = $("#phoneNum");
+var $email = $("#email");
+var $psw = $("#psw");
+var $add1 = $("#add1");
+var $add2 = $("#add2");
+var $city = $("#city");
+var $state = $("#state");
+var $zip = $("#zip");
+var $cci = $("#cci");
+var $cce = $("#cce");
+var $cvc = $("#cvc");
+var $comment = $("#comment");
+
 var $exampleText = $("#example-text");
 var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
 
+
+$(registerForm).on("submit", handleFormSubmit);
+function handleFormSubmit(event) 
+
+
+{
+  event.preventDefault();
+  // Wont submit the post if we are missing a body, title, or author
+  // if (!firstName.val().trim() || !bodyInput.val().trim() || !authorSelect.val()) {
+  //   return;
+  // }
+  // Constructing a newPost object to hand to the database
+  var newCustomer = {
+    firstName: firstname.val(),
+    lastName: lastname.val(),
+    address_1: add1.val(),
+    address_2: add2.val(),
+    city: city.val(),
+    state: state.val(),
+    zip: zip.val(),
+    phone: phoneNum.val(),
+    email: email.val(),
+    password: psw.val(),
+    credit_card: cci.val(),
+    expiration: cce.val(),
+    cvc: cvc.val(),
+    comment: comment.val()
+  };
+
+  // If we're updating a post run updatePost to update a post
+  // Otherwise run submitPost to create a whole new post
+  // if (updating) {
+  //   newPost.id = postId;
+  //   updatePost(newPost);
+  // }
+  // else {
+    // submitRegistration(newCustomer);
+  // }
+}
+
+// function submitRegistration(post) {
+//   $.post("/api/customer", post, function() {
+//     window.location.href = "/";
+//   });
+// }
 // The API object contains methods for each kind of request we'll make
 var API = {
-  saveExample: function(example) {
+  saveExample: function(customer) {
     return $.ajax({
       headers: {
         "Content-Type": "application/json"
       },
       type: "POST",
-      url: "api/examples",
-      data: JSON.stringify(example)
+      url: "api/customers",
+      data: JSON.stringify(customer)
     });
   },
   getExamples: function() {
     return $.ajax({
-      url: "api/examples",
+      url: "api/customers",
       type: "GET"
     });
   },
   deleteExample: function(id) {
     return $.ajax({
-      url: "api/examples/" + id,
+      url: "api/customers/" + id,
       type: "DELETE"
     });
   }

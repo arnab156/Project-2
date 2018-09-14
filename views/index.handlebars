@@ -39,7 +39,7 @@
                     <p>LOG IN HERE.</p>
                 <div>
                     <label for="uname"><b>Username</b></label>
-                    <input type="text" placeholder="Enter Username" name="uname" required>
+                    <input type="text" placeholder="Enter Username" name="uname" id="username" required>
                 
                     <label for="psw"><b>Password</b></label>
                     <input type="password" placeholder="Enter Password" name="psw" required>
@@ -57,35 +57,46 @@
             <form id="registerForm" class = "form">
                     <div>
                         <label for="fname"><b>First Name</b></label>
-                        <input type="text" placeholder="Enter First Name" name="fname" required>
+                        <input type="text" placeholder="Enter First Name" name="fname" id="fname" required>
 
                         <label for="lname"><b>Last Name</b></label>
-                        <input type="text" placeholder="Enter Last Name" name="lname" required>
+                        <input type="text" placeholder="Enter Last Name" name="lname" id="lname" required>
 
                         <label for="phoneNum"><b>Phone Number</b></label>
-                        <input type="text" placeholder="+19997776666" name="phoneNum" required>
+                        <input type="text" placeholder="+19997776666" name="phoneNum" id="phoneNum" required>
 
-                        <label for="userName"><b>Email (Username)</b></label>
-                        <input type="email" placeholder="adam@adamfrontdesk.com" name="userName" required>
+                        <label for="email"><b>Email (Username)</b></label>
+                        <input type="email" placeholder="adam@adamfrontdesk.com" name="email" id="email" required>
 
                         <label for="psw"><b>Password</b></label>
-                        <input type="password" placeholder="Enter Password" name="psw" required>
+                        <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
 
                         <label for="add1"><b>Address Line 1</b></label>
-                        <input type="password" placeholder="Address Line 1" name="add1" required>
+                        <input type="password" placeholder="Address Line 1" name="add1" id="add1" required>
 
                         <label for="add2"><b>Address Line 2</b></label>
-                        <input type="text" placeholder="Address Line 2" name="add2" required>
+                        <input type="text" placeholder="Address Line 2" name="add2" id="add2" required>
 
                         <label for="city"><b>City</b></label>
-                        <input type="text" placeholder="City" name="city" required>
+                        <input type="text" placeholder="City" name="city" id="city" required>
 
                         <label for="state"><b>State Code</b></label>
-                        <input type="text" placeholder="IL" name="state" required>
+                        <input type="text" placeholder="IL" name="state" id="state" required>
 
                         <label for="zip"><b>ZIP</b></label>
-                        <input type="text" placeholder="556677" name="zip" required>
+                        <input type="text" placeholder="556677" name="zip" id="zip" required>
                             
+                            <label for="CCI"><b>Credit Card Info</b></label>
+       <input type="text" placeholder="0000 1111 1111 3333" name="CCI" id="cci" required>
+
+       <label for="CCE"><b>Credit Card Expiration</b></label>
+       <input type="text" placeholder="00/21" name="CCE" id="cce" required>
+
+       <label for="CVC"><b>Credit Card CVC</b></label>
+       <input type="text" placeholder="123" name="CVC" id="cvc" required>
+
+       <label for="comment"><b>Comments</b></label>
+       <input type="text" placeholder="any comments" name="comment" id="comment">
                         <button type="submit" id="completeRegisterBtn">Submit</button>
                         <button type="submit" id="cancelRegistrationBtn">Cancel</button>
                      </div>

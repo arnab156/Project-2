@@ -10,8 +10,8 @@ module.exports = function(app) {
 
   // Create a new example
   app.post("/api/customer", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
+    db.customer.create(req.body).then(function(testdb) {
+      res.json(testdb);
     });
   });
 
@@ -21,4 +21,14 @@ module.exports = function(app) {
       res.json(dbExample);
     });
   });
+
+
+
+  app.post("/api/customer", function(req, res) {
+    console.log(req.body);
+    db.customer.create(req.body).then(function(testdb) {
+      res.json(testdb);
+    });
+  });
+
 };
