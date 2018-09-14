@@ -16,6 +16,297 @@
         
         <title>ADAM Log-in!</title>
 
+<style>
+/* .list-group-item {
+  line-height: 2.5;
+} */
+body, html {
+  height:100%;
+  margin: 0;
+}
+img {
+  width: 100px;
+  margin-right: 20px;
+}
+.modal-style {
+  background-color: rgb(83, 218, 236);
+}
+.form input {
+  width: 100%;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 10px;
+  background-color: white;
+  background-image: url('searchicon.png');
+  background-position: 10px 10px; 
+  background-repeat: no-repeat;
+  padding: 8px 20px 12px 40px;
+}
+
+.form button{
+  background-color:rgb(56, 0, 130);;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  width: 100%;
+}
+#registerBtn{
+  background-color: black;
+  color: whitesmoke
+}
+/* img {
+  width: 25%;
+  margin: 10px 20px 0 10px;
+} */
+.card {
+box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+transition: 0.3s;
+border-radius: 5px;
+width: 80%;
+margin: 30px 9%;
+background-color: aquamarine;
+transform: rotateY(-10deg) rotateX(2deg) scale(0.9);
+position: absolute;
+border-bottom: 4px solid rgba(0, 0, 0, 0.5);
+mix-blend-mode: hard-light;
+/* mix-blend-mode: darken; */
+}
+.card:hover {
+box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+transform: rotateY(-12deg) rotateX(-2deg) scale(1.00);
+transition: transform 0.55s ease-out;
+mix-blend-mode: normal;
+}
+.container_fd {
+padding: 2px 16px;    
+}
+.btn {
+width: 130px;
+height: 40px;
+background: linear-gradient(to bottom, #4eb5e5 0%,#389ed5 100%); /* W3C */
+border: none;
+border-radius: 5px;
+position: relative;
+border-bottom: 4px solid #2b8bc6;
+color: #fbfbfb;
+font-weight: 600;
+font-family: 'Open Sans', sans-serif;
+text-shadow: 1px 1px 1px rgba(0,0,0,.4);
+font-size: 15px;
+text-align: left;
+text-indent: 5px;
+box-shadow: 0px 3px 0px 0px rgba(0,0,0,.2);
+cursor: pointer;
+float: left;
+/* Just for presentation */  
+display: block;
+/* margin: 10 auto; */
+margin-left: 5px;
+margin-bottom: 10px;
+}
+.btn:active {
+box-shadow: 0px 2px 0px 0px rgba(0,0,0,.2);
+top: 1px;
+}
+.btn:after {
+content: "";
+width: 0;
+height: 0;
+display: block;
+border-top: 20px solid #187dbc;
+border-bottom: 20px solid #187dbc;
+border-left: 16px solid transparent;
+border-right: 20px solid #187dbc;
+position: absolute;
+opacity: 0.6; 
+right: 0;
+top: 0;
+border-radius: 0 5px 5px 0;  
+}
+
+.img_fd {
+  width: 50px;
+   border-radius: 5px 5px 0 0;
+}
+
+.card_fd {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 5px;
+  width: 200px;
+  background-color: aquamarine;
+}
+
+.card_fd:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container_fd {
+  padding: 2px 16px;
+  
+}
+.button_fd {
+  width: 130px;
+  height: 40px;
+  background: linear-gradient(to bottom, #4eb5e5 0%,#389ed5 100%); /* W3C */
+  border: none;
+  border-radius: 5px;
+  position: relative;
+  border-bottom: 4px solid #2b8bc6;
+  color: #fbfbfb;
+  font-weight: 600;
+  font-family: 'Open Sans', sans-serif;
+  text-shadow: 1px 1px 1px rgba(0,0,0,.4);
+  font-size: 15px;
+  text-align: left;
+  text-indent: 5px;
+  box-shadow: 0px 3px 0px 0px rgba(0,0,0,.2);
+  cursor: pointer;
+  float: left;
+  /* Just for presentation */  
+  display: block;
+  /* margin: 10 auto; */
+  margin-left: 5px;
+  margin-bottom: 10px;
+}
+.button_fd:active {
+  box-shadow: 0px 2px 0px 0px rgba(0,0,0,.2);
+  top: 1px;
+}
+
+.button_fd:after {
+  content: "";
+  width: 0;
+  height: 0;
+  display: block;
+  border-top: 20px solid #187dbc;
+  border-bottom: 20px solid #187dbc;
+  border-left: 16px solid transparent;
+  border-right: 20px solid #187dbc;
+  position: absolute;
+  opacity: 0.6; 
+  right: 0;
+  top: 0;
+  border-radius: 0 5px 5px 0;  
+}
+
+body {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto; 
+}
+
+h1 {
+  color: whitesmoke;
+  font-family: 'Abril Fatface', cursive;
+  /* transform: rotateY(30deg) rotateX(-45deg); */
+}
+
+.bg, .bg2, .bg3 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.bg {
+  -webkit-clip-path: polygon(100% 17%, 100% 100%, 0 100%, 0 46%);
+  clip-path: polygon(100% 17%, 100% 100%, 0 100%, 0 46%);
+  z-index: -2;
+  background-color: rgb(56, 0, 130);
+
+}
+
+.bg2 {
+  -webkit-clip-path: polygon(100% 64%, 100% 100%, 0 100%, 0 75%);
+  clip-path: polygon(100% 64%, 100% 100%, 0 100%, 0 75%);
+  z-index: -1;
+  background-color: rgb(83, 218, 236);
+}
+
+.bg3 {
+  -webkit-clip-path: polygon(50% 0%, 100% 0, 100% 8%, 0 37%, 0 0);
+  clip-path: polygon(50% 0%, 100% 0, 100% 8%, 0 37%, 0 0);
+  z-index: -3;
+  background-color: rgb(83, 218, 236);
+}
+
+.container{
+  display: grid;
+  grid-template-columns: 50% auto;
+  height: auto;
+  align-self: center;
+  margin: 0 50px; 
+}
+
+ul {
+  list-style-type: none;
+  perspective: 1000px;
+}
+
+ul li {
+  width: 400px;
+  display: grid;
+  grid-template-columns: 20% auto;
+  border-radius: 10px;
+  padding: 15px;
+  cursor: pointer;
+  transform: rotateY(-40deg) rotateX(15deg);
+  position: absolute;
+  border-bottom: 4px solid rgba(0, 0, 0, 0.3);
+  mix-blend-mode: multiply;
+}
+
+ul li:nth-child(1) {
+  background: rgb(186, 204, 204);
+  top: -300px;
+  z-index: 2;
+}
+
+ul li:nth-child(2) {
+  background: rgb(219, 181, 181);
+  z-index: 1;
+  top: 100px;
+}
+
+ul li:nth-child(3) {
+  background: rgb(241, 238, 195);
+  top: -125px;
+}
+ul li:hover{
+  transform: rotateY(-20deg) rotateX(10deg) scale(1.30);
+  transition: transform .4s ease-out;
+  background-color: rgb(255, 255, 255);
+  z-index: 3;
+  mix-blend-mode: normal;
+}
+h1{
+  font-size: 3em;
+  margin-top: 0;
+}
+
+#left > p {
+color: gray;
+line-height: 1.5em;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: whitesmoke;
+  color: white;
+  text-align: center;
+  padding: 10px 5px;
+}
+
+
+</style>
     </head>
 <body>
 {{{body}}}
