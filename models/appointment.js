@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const appointment = sequelize.define('appointment', {
+  const Appointment = sequelize.define('Appointment', {
     customerId: DataTypes.INTEGER,
     serviceProviderId: DataTypes.INTEGER,
     service: DataTypes.STRING,
@@ -8,8 +8,8 @@ module.exports = (sequelize, DataTypes) => {
     price: DataTypes.INTEGER,
     comment: DataTypes.TEXT
   }, {});
-  appointment.associate = function(models) {
+  Appointment.associate = function(models) {
     // associations can be defined here
   };
-  return appointment;
+  return Appointment;
 };

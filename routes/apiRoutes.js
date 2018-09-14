@@ -9,7 +9,7 @@ module.exports = function(app) {
   });
 
   // Create a new example
-  app.post("/api/customer", function(req, res) {
+  app.post("/api/customers/", function(req, res) {
     db.customer.create(req.body).then(function(testdb) {
       res.json(testdb);
     });
@@ -24,11 +24,41 @@ module.exports = function(app) {
 
 
 
-  app.post("/api/customer", function(req, res) {
-    console.log(req.body);
-    db.customer.create(req.body).then(function(testdb) {
-      res.json(testdb);
-    });
-  });
+  // app.post("/api/customers/", function(req, res) {
+  //   console.log(req.body);
+  //   db.Customer.create({
+  //         firstName: req.body.firstName,
+  //         lastName: req.body.lastName,
+  //         address_1: req.body.address_1,
+  //         address_2: req.body.address_2,
+  //         city: req.body.city,
+  //         state: req.body.state,
+  //         zip: req.body.zip,
+  //         phone: req.body.phone,
+  //         email: req.body.email,
+  //         password: req.body.password,
+  //         credit_card: req.body.credit_card,
+  //         expiration: req.body.expiration,
+  //         cvc: req.body.cvc,
+  //         comment: req.body.comment
+  //       }).then(function(testdb) {
+  //     res.json(testdb);
+  //   });
+  // });
+
+
+  // app.post("/api/posts", function(req, res) {
+  //   console.log(req.body);
+  //   db.Post.create({
+  //     title: req.body.title,
+  //     body: req.body.body,
+  //     category: req.body.category
+  //   })
+  //     .then(function(dbPost) {
+  //       res.json(dbPost);
+  //     });
+  // });
+
+
 
 };

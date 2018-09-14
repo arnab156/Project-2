@@ -1,127 +1,179 @@
-    <div class = "container"> 
-        <div id = "left">
-            <h1>ADAM FrontDesk!</h1>
-            <!-- <p> Welcome to ADAM FrontDesk University! Please log in to go to see, manage and create appointments</p> -->
-        </div> 
-        <div id = "right"> 
-          <ul>
-            <li>
-              <img src = "https://www.designfreelogoonline.com/wp-content/uploads/2014/12/00546-Square-levels-logo-design-free-logos-online-02.png"> 
-              <span>
-                  <strong>Manager</strong>
-                  <p> Forgot Password? Contact Front Desk</p>
-              </span>
-            </li>
+<div class="container">
+  <div id="left">
+    <h1>ADAM FrontDesk!</h1>
+    <!-- <p> Welcome to ADAM FrontDesk University! Please log in to go to see, manage and create appointments</p> -->
+  </div>
+  <div id="right">
+    <ul>
+      <li>
+        <img src="https://www.designfreelogoonline.com/wp-content/uploads/2014/12/00546-Square-levels-logo-design-free-logos-online-02.png">
+        <span>
+          <strong>Manager</strong>
+          <p> Forgot Password? Contact Front Desk</p>
+        </span>
+      </li>
 
-            <li id="customerBtn"> 
-              <img src = "https://www.designfreelogoonline.com/wp-content/uploads/2014/12/00546-Square-levels-logo-design-free-logos-online-02.png"> 
-              <span>
-                  <strong>Customer</strong>
-                  <p><a href="#ex1" rel="modal:open">Log in & Register</a></p>
-              </span>
-            </li>
+      <li id="customerBtn">
+        <img src="https://www.designfreelogoonline.com/wp-content/uploads/2014/12/00546-Square-levels-logo-design-free-logos-online-02.png">
+        <span>
+          <strong>Customer</strong>
+          <p><a href="#ex1" rel="modal:open">Log in & Register</a></p>
+        </span>
+      </li>
 
-            <li>
-              <img src = "https://www.designfreelogoonline.com/wp-content/uploads/2014/12/00546-Square-levels-logo-design-free-logos-online-02.png"> 
-              <span>
-                  <strong>Front Desk</strong>
-                  <p> Forgot Password? Contact Front Desk</p>
-              </span>
-            </li>
-          </ul>
-        </div> 
-            
+      <li>
+        <img src="https://www.designfreelogoonline.com/wp-content/uploads/2014/12/00546-Square-levels-logo-design-free-logos-online-02.png">
+        <span>
+          <strong>Front Desk</strong>
+          <p> Forgot Password? Contact Front Desk</p>
+        </span>
+      </li>
+    </ul>
+  </div>
 
-        <!-- Modal HTML embedded directly into document -->
-        <div id="ex1" class="modal modal-style">
-            
-            <form id="loginForm" class = "form">
-                    <p>LOG IN HERE.</p>
-                <div>
-                    <label for="uname"><b>Username</b></label>
-                    <input type="text" placeholder="Enter Username" name="uname" id="username" required>
-                
-                    <label for="psw"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="psw" required>
-                        
-                    <button type="submit" id="customerLogin">Login</button>
-                    <label>
-                        <input type="checkbox" checked="checked" name="remember"> Remember me
-                    </label>
-                 </div>
-            </form>
-            <!-- <a href="#" rel="modal:close">Close</a> -->
-            <p><button id="registerBtn">Register Here</button></p>
 
-            
-            <form id="registerForm" class = "form">
-                    <div>
-                        <label for="fname"><b>First Name</b></label>
-                        <input type="text" placeholder="Enter First Name" name="fname" id="fname" required>
+  <!-- Modal HTML embedded directly into document -->
+  <div id="ex1" class="modal modal-style">
 
-                        <label for="lname"><b>Last Name</b></label>
-                        <input type="text" placeholder="Enter Last Name" name="lname" id="lname" required>
+    <form id="loginForm" class="form">
+      <p>LOG IN HERE.</p>
+      <div>
+        <label for="uname"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="uname" id="username" required>
 
-                        <label for="phoneNum"><b>Phone Number</b></label>
-                        <input type="text" placeholder="+19997776666" name="phoneNum" id="phoneNum" required>
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" required>
 
-                        <label for="email"><b>Email (Username)</b></label>
-                        <input type="email" placeholder="adam@adamfrontdesk.com" name="email" id="email" required>
+        <button type="submit" id="customerLogin">Login</button>
+        <label>
+          <input type="checkbox" checked="checked" name="remember"> Remember me
+        </label>
+      </div>
+    </form>
+    <!-- <a href="#" rel="modal:close">Close</a> -->
+    <p><button id="registerBtn">Register Here</button></p>
 
-                        <label for="psw"><b>Password</b></label>
-                        <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
 
-                        <label for="add1"><b>Address Line 1</b></label>
-                        <input type="password" placeholder="Address Line 1" name="add1" id="add1" required>
+    <form id="registerForm" class="form">
+      <div>
+        <label for="fname"><b>First Name</b></label>
+        <input type="text" placeholder="Enter First Name" name="fname" id="firstName" required>
 
-                        <label for="add2"><b>Address Line 2</b></label>
-                        <input type="text" placeholder="Address Line 2" name="add2" id="add2" required>
+        <label for="lname"><b>Last Name</b></label>
+        <input type="text" placeholder="Enter Last Name" name="lname" id="lastName" required>
 
-                        <label for="city"><b>City</b></label>
-                        <input type="text" placeholder="City" name="city" id="city" required>
+        <label for="phoneNum"><b>Phone Number</b></label>
+        <input type="text" placeholder="+19997776666" name="phoneNum" id="phone" required>
 
-                        <label for="state"><b>State Code</b></label>
-                        <input type="text" placeholder="IL" name="state" id="state" required>
+        <label for="email"><b>Email (Username)</b></label>
+        <input type="email" placeholder="adam@adamfrontdesk.com" name="email" id="email" required>
 
-                        <label for="zip"><b>ZIP</b></label>
-                        <input type="text" placeholder="556677" name="zip" id="zip" required>
-                            
-                            <label for="CCI"><b>Credit Card Info</b></label>
-       <input type="text" placeholder="0000 1111 1111 3333" name="CCI" id="cci" required>
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" id="password" required>
 
-       <label for="CCE"><b>Credit Card Expiration</b></label>
-       <input type="text" placeholder="00/21" name="CCE" id="cce" required>
+        <label for="add1"><b>Address Line 1</b></label>
+        <input type="text" placeholder="Address Line 1" name="add1" id="address_1" required>
 
-       <label for="CVC"><b>Credit Card CVC</b></label>
-       <input type="text" placeholder="123" name="CVC" id="cvc" required>
+        <label for="add2"><b>Address Line 2</b></label>
+        <input type="text" placeholder="Address Line 2" name="add2" id="address_2" required>
 
-       <label for="comment"><b>Comments</b></label>
-       <input type="text" placeholder="any comments" name="comment" id="comment">
-                        <button type="submit" id="completeRegisterBtn">Submit</button>
-                        <button type="submit" id="cancelRegistrationBtn">Cancel</button>
-                     </div>
-                </form>
+        <label for="city"><b>City</b></label>
+        <input type="text" placeholder="City" name="city" id="city" required>
 
-        </div>
-    </div>
+        <label for="state"><b>State Code</b></label>
+        <input type="text" placeholder="IL" name="state" id="state" required>
 
+        <label for="zip"><b>ZIP</b></label>
+        <input type="text" placeholder="556677" name="zip" id="zip" required>
+
+        <label for="CCI"><b>Credit Card Info</b></label>
+        <input type="text" placeholder="0000 1111 1111 3333" name="CCI" id="credit_card" required>
+
+        <label for="CCE"><b>Credit Card Expiration</b></label>
+        <input type="text" placeholder="00/21" name="CCE" id="expiration" required>
+
+        <label for="CVC"><b>Credit Card CVC</b></label>
+        <input type="text" placeholder="123" name="CVC" id="cvc" required>
+
+        <label for="comment"><b>Comments</b></label>
+        <input type="text" placeholder="any comments" name="comment" id="comment">
+        <button type="submit" id="completeRegisterBtn">Submit</button>
+        <button id="cancelRegistrationBtn">Cancel</button>
+      </div>
+    </form>
+   
+
+  </div>
+</div>
+ {{!-- <script src="/public/js/index.js" type="text/javascript"></script> --}}
 <script>
-  $( document ).ready(function() {
+  $(document).ready(function () {
     $("#registerForm").hide();
   });
-  $("#registerBtn").click(function (){
+  $("#registerBtn").click(function () {
     $("#loginForm").hide();
     $("#registerBtn").hide();
-
-    $("#registerForm").show(); 
+    $("#registerForm").show();
   });
-  $("#completeRegisterBtn").click(function (){
-    $("#loginForm").show();
-    $("#registerBtn").show();
-    $("#registerForm").hide(); 
-  });
-  $("#cancelRegistrationBtn").click(function (){
+  $("#cancelRegistrationBtn").click(function () {
     location.reload();
   });
-</script>
 
+  $(document).ready(function() {
+var $firstName = $("#firstName");
+var $lastName = $("#lastName");
+var $phone = $("#phone");
+var $email = $("#email");
+var $password = $("#password");
+var $address_1 = $("#address_1");
+var $address_2 = $("#address_2");
+var $city = $("#city");
+var $state = $("#state");
+var $zip = $("#zip");
+var $credit_card = $("#credit_card");
+var $expiration = $("#expiration");
+var $cvc = $("#cvc");
+var $comment = $("#comment");
+var registerForm = $("#registerForm");
+
+$(registerForm).on("submit", handleFormSubmit);
+function handleFormSubmit(event) {
+  event.preventDefault();
+
+  // Wont submit the post if we are missing a body, title, or author
+  // if (!firstname.val().trim() || !phoneNum.val().trim() || !email.val()) {
+  //   return;
+  // }
+  // Constructing a newPost object to hand to the database
+  var newCustomer = {
+    firstName: $firstName.val().trim(),
+    lastName: $lastName.val().trim(),
+    address_1: $address_1.val().trim(),
+    address_2: $address_2.val().trim(),
+    city: $city.val().trim(),
+    state: $state.val().trim(),
+    zip: $zip.val().trim(),
+    phone: $phone.val().trim(),
+    email: $email.val().trim(),
+    password: $password.val().trim(),
+    credit_card: $credit_card.val().trim(),
+    expiration: $expiration.val().trim(),
+    cvc: $cvc.val().trim(),
+    comment: $comment.val().trim()
+  };
+
+  console.log(registerForm);
+  console.log(newCustomer);
+
+  submitPost(newCustomer);
+
+  function submitPost(Post) {
+    $.post("/api/customers/", Post, function() {
+      window.location.href = "/";
+    });
+  }
+}
+});
+
+  
+</script>
