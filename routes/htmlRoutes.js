@@ -55,6 +55,8 @@ module.exports = function(app) {
   // });
 
     // Render 404 page for any unmatched routes
+
+    // Hello world
   app.get("/", function(req, res) {
     res.render("index");
   });
