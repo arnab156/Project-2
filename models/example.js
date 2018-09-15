@@ -5,3 +5,4 @@ module.exports = function(sequelize, DataTypes) {
   });
   return Example;
 };
+// exports = module.exports = Example;

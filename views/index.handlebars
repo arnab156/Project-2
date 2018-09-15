@@ -35,16 +35,16 @@
   <!-- Modal HTML embedded directly into document -->
   <div id="ex1" class="modal modal-style">
 
-    <form id="loginForm" class="form">
+    <form id="loginForm" class="login form">
       <p>LOG IN HERE.</p>
       <div>
         <label for="uname"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="uname" id="username" required>
+        <input type="text" placeholder="Enter Username" name="username" id="username" class="member-name" required>
 
         <label for="psw"><b>Password</b></label>
         <input type="password" placeholder="Enter Password" name="psw" id="userpass" required>
 
-        <button type="button" id="customerLogin">Login</button>
+        <button type="submit" id="customerLogin">Login</button>
         <label>
           <input type="checkbox" checked="checked" name="remember"> Remember me
         </label>
@@ -54,22 +54,25 @@
     <p><button id="registerBtn" class="btnBlack">Register Here</button></p>
 
 
-    <form id="registerForm" class="form">
+    <form id="registerForm" class="signup form">
       <div>
-        <label for="fname"><b>First Name</b></label>
+        {{!-- <label for="fname"><b>First Name</b></label>
         <input type="text" placeholder="Enter First Name" name="fname" id="firstName" required>
 
         <label for="lname"><b>Last Name</b></label>
         <input type="text" placeholder="Enter Last Name" name="lname" id="lastName" required>
 
         <label for="phoneNum"><b>Phone Number</b></label>
-        <input type="text" placeholder="+19997776666" name="phoneNum" id="phone" required>
+        <input type="text" placeholder="+19997776666" name="phoneNum" id="phone" required> --}}
 
         <label for="email"><b>Email (Username)</b></label>
-        <input type="email" placeholder="adam@adamfrontdesk.com" name="email" id="email" required>
+        <input type="email" placeholder="adam@adamfrontdesk.com" name="email" id="email-input" required>
 
         <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" id="password" required>
+        <input type="password" placeholder="Enter Password" name="psw" id="password-input" required>
+        
+        {{!-- <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" id="password-confirm" required>
 
         <label for="add1"><b>Address Line 1</b></label>
         <input type="text" placeholder="Address Line 1" name="add1" id="address_1" required>
@@ -96,7 +99,7 @@
         <input type="text" placeholder="123" name="CVC" id="cvc" required>
 
         <label for="comment"><b>Comments</b></label>
-        <input type="text" placeholder="any comments" name="comment" id="comment">
+        <input type="text" placeholder="any comments" name="comment" id="comment"> --}}
         <button type="submit" id="completeRegisterBtn">Submit</button>
         <button id="cancelRegistrationBtn">Cancel</button>
       </div>
@@ -112,7 +115,7 @@
       <p>FRONT DESK LOG IN ONLY.</p>
       <div>
         <label for="uname"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="uname" id="frontDeskName" required>
+        <input type="text" placeholder="Enter Username" name="uname" id="frontDeskName" class="member-name" required>
         <label for="pass"><b>Password</b></label>
         <input type="password" placeholder="Enter Password" name="pass" id="frontDeskPass" required>
         <button type="button" id="frontDeskLogin" >Login</button>
@@ -156,80 +159,5 @@
   $("#cancelRegistrationBtn").click(function () {
     location.reload();
   });
-
-  $("#customerLogin").click(function () {
-    var username = $("#username").val();
-    var userpass = $("#userpass").val();
-
-    var login = {
-      'username': username,
-      'userpass': userpass
-    }
-
-    $.post("/api/customerlogin", login, function (result) {
-
-      console.log(result);
-      // we will get if valid user or not
-
-    });
-  });
-
-  $(document).ready(function () {
-    var $firstName = $("#firstName");
-    var $lastName = $("#lastName");
-    var $phone = $("#phone");
-    var $email = $("#email");
-    var $password = $("#password");
-    var $address_1 = $("#address_1");
-    var $address_2 = $("#address_2");
-    var $city = $("#city");
-    var $state = $("#state");
-    var $zip = $("#zip");
-    var $credit_card = $("#credit_card");
-    var $expiration = $("#expiration");
-    var $cvc = $("#cvc");
-    var $comment = $("#comment");
-    var registerForm = $("#registerForm");
-
-    $(registerForm).on("submit", handleFormSubmit);
-    function handleFormSubmit(event) {
-      event.preventDefault();
-
-      // Wont submit the post if we are missing a body, title, or author
-      // if (!firstname.val().trim() || !phoneNum.val().trim() || !email.val()) {
-      //   return;
-      // }
-      // Constructing a newPost object to hand to the database
-      var newCustomer = {
-        firstName: $firstName.val().trim(),
-        lastName: $lastName.val().trim(),
-        address_1: $address_1.val().trim(),
-        address_2: $address_2.val().trim(),
-        city: $city.val().trim(),
-        state: $state.val().trim(),
-        zip: $zip.val().trim(),
-        phone: $phone.val().trim(),
-        email: $email.val().trim(),
-        password: $password.val().trim(),
-        credit_card: $credit_card.val().trim(),
-        expiration: $expiration.val().trim(),
-        cvc: $cvc.val().trim(),
-        comment: $comment.val().trim()
-      };
-
-      console.log(registerForm);
-      console.log(newCustomer);
-
-      submitPost(newCustomer);
-
-      function submitPost(Post) {
-        $.post("/api/customers/", Post, function () {
-          alert("You are registered! Please go to Customer Log in!")
-          window.location.href = "/";
-        });
-      }
-    }
-  });
-
 
 </script>

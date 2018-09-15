@@ -1,6 +1,50 @@
 var db = require("../models");
 
+// Login start
+// Requiring path to so we can use relative routes to our HTML files
+var path = require("path");
+
+// Requiring our custom middleware for checking if a user is logged in
+var isAuthenticated = require("../config/middleware/isAuthenticated");
+// Login end
+
 module.exports = function(app) {
+
+
+  // Login start
+  app.get("/", function(req, res) {
+    // If the user already has an account send them to the members page
+    if (req.user) {
+      res.redirect("../views/customer.handlebars");
+    }
+    res.render(path.join(__dirname, "../views/index.handlebars"));
+  });
+
+  app.get("/login", function(req, res) {
+    // If the user already has an account send them to the members page
+    if (req.user) {
+      res.redirect("../views/customer.handlebars");
+    }
+    res.render(path.join(__dirname, "../views/customer.handlebars"));
+  });
+
+  // Here we've add our isAuthenticated middleware to this route.
+  // If a user who is not logged in tries to access this route they will be redirected to the signup page
+  app.get("/members", isAuthenticated, function(req, res) {
+    res.render(path.join(__dirname, "../views/customer.handlebars"));
+  });
+
+  app.get("/logout", function(req, res) {
+    res.render(path.join(__dirname, "../views/index.handlebars"));
+  });
+
+// Login end
+
+
+
+
+
+
   // Load index page
   app.get("/customer/:id", function(req, res) {
     db.customer.findOne({

@@ -1,57 +1,57 @@
-$(document).ready(function() {
-var $firstName = $("#firstName");
-var $lastName = $("#lastName");
-var $phone = $("#phone");
-var $email = $("#email");
-var $password = $("#password");
-var $address_1 = $("#address_1");
-var $address_2 = $("#address_2");
-var $city = $("#city");
-var $state = $("#state");
-var $zip = $("#zip");
-var $credit_card = $("#credit_card");
-var $expiration = $("#expiration");
-var $cvc = $("#cvc");
-var $comment = $("#comment");
-var registerForm = $("#registerForm");
+// $(document).ready(function() {
+// var $firstName = $("#firstName");
+// var $lastName = $("#lastName");
+// var $phone = $("#phone");
+// var $email = $("#email");
+// var $password = $("#password");
+// var $address_1 = $("#address_1");
+// var $address_2 = $("#address_2");
+// var $city = $("#city");
+// var $state = $("#state");
+// var $zip = $("#zip");
+// var $credit_card = $("#credit_card");
+// var $expiration = $("#expiration");
+// var $cvc = $("#cvc");
+// var $comment = $("#comment");
+// var registerForm = $("#registerForm");
 
-$(registerForm).on("submit", handleFormSubmit);
-console.log(registerForm);
+// $(registerForm).on("submit", handleFormSubmit);
+// console.log(registerForm);
 
-function handleFormSubmit(event) {
-  event.preventDefault();
-  alert("i am here in index.js &&&&&&");
-  // Wont submit the post if we are missing a body, title, or author
-  // if (!firstname.val().trim() || !phoneNum.val().trim() || !email.val()) {
-  //   return;
-  // }
-  // Constructing a newPost object to hand to the database
-  var newCustomer = {
-    firstName: firstName.val(),
-    lastName: lastName.val(),
-    address_1: address_1.val(),
-    address_2: address_2.val(),
-    city: city.val(),
-    state: state.val(),
-    zip: zip.val(),
-    phone: phone.val(),
-    email: email.val(),
-    password: password.val(),
-    credit_card: credit_card.val(),
-    expiration: expiration.val(),
-    cvc: cvc.val(),
-    comment: comment.val()
-  };
+// function handleFormSubmit(event) {
+//   event.preventDefault();
+//   alert("i am here in index.js &&&&&&");
+//   // Wont submit the post if we are missing a body, title, or author
+//   // if (!firstname.val().trim() || !phoneNum.val().trim() || !email.val()) {
+//   //   return;
+//   // }
+//   // Constructing a newPost object to hand to the database
+//   var newCustomer = {
+//     firstName: firstName.val(),
+//     lastName: lastName.val(),
+//     address_1: address_1.val(),
+//     address_2: address_2.val(),
+//     city: city.val(),
+//     state: state.val(),
+//     zip: zip.val(),
+//     phone: phone.val(),
+//     email: email.val(),
+//     password: password.val(),
+//     credit_card: credit_card.val(),
+//     expiration: expiration.val(),
+//     cvc: cvc.val(),
+//     comment: comment.val()
+//   };
 
-  console.log(newCustomer);
+//   console.log(newCustomer);
 
-  submitPost(newCustomer);
+//   submitPost(newCustomer);
 
-  function submitPost(Post) {
-    $.post("/api/customers/", Post, function() {
+//   function submitPost(Post) {
+//     $.post("/api/customers/", Post, function() {
       // window.location.href = "/";
-    });
-  }
+  //   });
+  // }
 
   // If we're updating a post run updatePost to update a post
   // Otherwise run submitPost to create a whole new post
@@ -171,9 +171,9 @@ function handleFormSubmit(event) {
 // };
 
 // Add event listeners to the submit and delete buttons
-$submitBtn.on("click", handleFormSubmit);
+// $submitBtn.on("click", handleFormSubmit);
 // $exampleList.on("click", ".delete", handleDeleteBtnClick);
 
 
 
-});
+// });

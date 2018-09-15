@@ -18,3 +18,4 @@ module.exports = (sequelize, DataTypes) => {
   };
   return ServiceProvider;
 };
+// exports = module.exports = ServiceProvider;
