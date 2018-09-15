@@ -9,10 +9,10 @@ module.exports = (sequelize, DataTypes) => {
     city: DataTypes.STRING,
     state: DataTypes.STRING,
     zip: DataTypes.INTEGER,
-    phone: DataTypes.INTEGER,
+    phone: DataTypes.STRING,
     email: DataTypes.STRING,
     password: DataTypes.STRING,
-    credit_card: DataTypes.INTEGER,
+    credit_card: DataTypes.STRING,
     expiration: DataTypes.STRING,
     cvc: DataTypes.INTEGER,
     comment: DataTypes.TEXT
