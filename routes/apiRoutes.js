@@ -44,9 +44,15 @@ module.exports = function(app) {
 
 
   // Get all examples
+  app.post("/api/serviceprovider", function(req, res) {
+    db.ServiceProvider.create(req.body).then(function(createdServiceProvider) {
+      res.json(createdServiceProvider);
+    });
+  });
+
   app.get("/api/serviceprovider", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
+    db.ServiceProvider.findAll({}).then(function(serviceProviders) {
+      res.json(serviceProviders);
     });
   });
 
