@@ -15,10 +15,33 @@ module.exports = function(app) {
   app.get("/", function(req, res) {
     // If the user already has an account send them to the members page
     if (req.user) {
-      res.redirect("../views/customer.handlebars");
+      res.redirect("../views/customerComplete.handlebars");
     }
     res.render(path.join(__dirname, "../views/index.handlebars"));
   });
+
+
+  app.get("/api/customerComplete/:id", isAuthenticated, function(req, res) {
+    var customerId = req.params.id
+    console.log(customerId);
+        db.Customer.findOne({
+          where :{
+            id : customerId,
+          }
+        }).then(function(data){
+          console.log("i am in html route of customercomplete/:id"+data);
+          res.render("customerComplete",data); 
+        });
+  });
+
+  // app.get("/api/customerComplete", function(req, res) {
+  //   // if (req.user) {
+  //   //   res.redirect("../views/customer.handlebars");
+  //   // }
+  //   res.render(path.join(__dirname, "../views/customerComplete"));
+  // });
+
+
 
   app.get("/login", function(req, res) {
     // If the user already has an account send them to the members page
@@ -40,21 +63,16 @@ module.exports = function(app) {
 
 // Login end
 
-
-
-
-
-
   // Load index page
   app.get("/customer/:id", function(req, res) {
-    db.customer.findOne({
+    db.Customer.findOne({
       where: {
         id: req.params.id
         }
-    }).then(function(customer) {
+    }).then(function(Customer) {
       res.render("customer", {
         note: "Welcome!",
-        customerFN: customer.firstName,
+        customerFN: Customer.firstName,
 
       });
     });
@@ -100,21 +118,33 @@ module.exports = function(app) {
     // Render 404 page for any unmatched routes
 
     // Hello world
-  app.get("/", function(req, res) {
-    res.render("index");
-  });
-
-
-
+  // app.get("/", function(req, res) {
+  //   res.render("index");
+  // });
 
   app.get("/frontdesk", function(req, res) {
-    res.render("frontdesk");
 
-//for each create HTML card and append picture, name on it
 
-//for each service providor, append html of availability
+    db.ServiceProvider.findAll({
+      // where: {
+      //   id: req.params.id
+      //   }
+    }).then(function(ServiceProvider) {
+      res.render("frontdesk", {
+        serviceprovider:ServiceProvider,
+        title: ServiceProvider.title,
+        stylist_firstname: ServiceProvider.firstName,
+
+      });
+    });
+
+
+
+
+
+    // res.render("frontdesk");
+
+    //for each create HTML card and append picture, name on it
+    //for each service providor, append html of availability
   });
-
-
-
 };//end of the module.exports
