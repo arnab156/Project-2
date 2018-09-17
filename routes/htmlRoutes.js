@@ -34,6 +34,20 @@ module.exports = function(app) {
     res.render(path.join(__dirname, "../views/customer.handlebars"));
   });
 
+
+// Login fornt-desk
+app.get("/loginfrontdesk", function(req, res) {
+  if (req.user) {
+    res.redirect("../views/frontdesk.handlebars");
+  }
+  res.render(path.join(__dirname, "../views/frontdesk.handlebars"));
+});
+app.get("/frontdesk", isAuthenticated, function(req, res) {
+  res.render(path.join(__dirname, "../views/customer.handlebars"));
+});
+
+
+
   app.get("/logout", function(req, res) {
     res.render(path.join(__dirname, "../views/index.handlebars"));
   });
@@ -107,13 +121,13 @@ module.exports = function(app) {
 
 
 
-  app.get("/frontdesk", function(req, res) {
-    res.render("frontdesk");
+  // app.get("/frontdesk", function(req, res) {
+  //   res.render("frontdesk");
 
 //for each create HTML card and append picture, name on it
 
 //for each service providor, append html of availability
-  });
+  // });
 
 
 

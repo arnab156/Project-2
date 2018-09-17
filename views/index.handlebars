@@ -111,28 +111,29 @@
   {{!-- modal for front desk --}}
 
   <div id="ex2" class="modal modal-style">
-    <form id="frontDeskLoginForm" class="form">
+    <form id="frontDeskLoginForm" class="frontdesk form">
       <p>FRONT DESK LOG IN ONLY.</p>
       <div>
         <label for="uname"><b>Username</b></label>
         <input type="text" placeholder="Enter Username" name="uname" id="frontDeskName" class="member-name" required>
         <label for="pass"><b>Password</b></label>
         <input type="password" placeholder="Enter Password" name="pass" id="frontDeskPass" required>
-        <button type="button" id="frontDeskLogin" >Login</button>
+        <button type="submit" id="frontDeskLogin" >Login</button>
+
       </div>
     </form>
     
   </div>
 
   <div id="ex3" class="modal modal-style">
-    <form id="frontDeskLoginForm" class="form">
+    <form id="ServiceProviderLoginForm" class="loginProvider form">
       <p>SERVICE PROVIDER LOG IN </p>
       <div>
         <label for="uname"><b>Username</b></label>
         <input type="text" placeholder="Enter Username" name="uname" id="ServiceProviderName" required>
         <label for="pass"><b>Password</b></label>
         <input type="password" placeholder="Enter Password" name="pass" id="ServiceProviderPass" required>
-        <button type="button" id="frontDeskLogin">Login</button>
+        <button type="submit" id="serviceproviderLogin">Login</button>
       </div>
     </form>
     <p><button id="ServiceProviderForgot" class="btnBlack">Forgot Password?</button></p>
