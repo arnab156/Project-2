@@ -43,17 +43,61 @@ module.exports = function(app) {
 
 
 
-  // Get all examples
-  app.get("/api/serviceprovider", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
+  // Create new service provider
+  app.post("/api/serviceproviders", function(req, res) {
+    db.ServiceProvider.create(req.body).then(function(createdServiceProvider) {
+      res.json(createdServiceProvider);
+    });
+  });
+  // Get all service providers
+  app.get("/api/serviceproviders", function(req, res) {
+    db.ServiceProvider.findAll({}).then(function(serviceProviders) {
+      res.json(serviceProviders);
+    });
+  });
+// Delete an existing service provider
+  app.delete("/api/serviceproviders/:id", function(req, res) {
+    db.ServiceProvider.destroy({ where: { id: req.params.id } }).then(function(deletedServiceProvider) {
+      res.json(deletedServiceProvider);
     });
   });
 
-  // Create a new example
+
+  // Create a new customer
   app.post("/api/customers/", function(req, res) {
-    db.customer.create(req.body).then(function(testdb) {
-      res.json(testdb);
+    db.Customer.create(req.body).then(function(createdCustomer) {
+      res.json(createdCustomer);
+    });
+  });
+  // Get all customers
+  app.get("/api/customers", function(req, res) {
+    db.Customer.findAll({}).then(function(allCustomers) {
+      res.json(allCustomers);
+    });
+  });
+  // Delete an existing customer
+  app.delete("/api/customer/:id", function(req, res) {
+    db.Customer.destroy({ where: { id: req.params.id } }).then(function(deletedCustomer) {
+      res.json(deletedCustomer);
+    });
+  });
+
+  // Create a new appointment
+  app.post("/api/appointments/", function(req, res) {
+    db.Appointment.create(req.body).then(function(createdAppointment) {
+      res.json(createdAppointment);
+    });
+  });
+  // Get all appointments 
+  app.get("/api/appointments", function(req, res) {
+    db.Appointment.findAll({}).then(function(allAppointments) {
+      res.json(allAppointments);
+    });
+  });
+  // Delete an existing appointment
+  app.delete("/api/appointments/:id", function(req, res) {
+    db.Appointment.destroy({ where: { id: req.params.id } }).then(function(deletedAppointment) {
+      res.json(deletedAppointment);
     });
   });
 
