@@ -33,6 +33,11 @@ module.exports = function(app) {
   app.post("/api/loginfrontdesk", passport.authenticate("local"), function(req, res) {
       res.json("/frontdesk");
   });
+  // login in service provider
+  app.post("/api/loginprovider", passport.authenticate("local"), function(req, res) {
+    res.json("/frontdesk");
+});
+
 
 
 

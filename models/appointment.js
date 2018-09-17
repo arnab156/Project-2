@@ -13,4 +13,3 @@ module.exports = (sequelize, DataTypes) => {
   };
   return Appointment;
 };
-// exports = module.exports = Appointment;

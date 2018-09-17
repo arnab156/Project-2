@@ -25,7 +25,7 @@ module.exports = function(app) {
     if (req.user) {
       res.redirect("../views/customer.handlebars");
     }
-    res.render(path.join(__dirname, "../views/customer.handlebars"));
+    res.render(path.join(__dirname, "../views/index.handlebars"));
   });
 
   // Here we've add our isAuthenticated middleware to this route.
@@ -43,7 +43,19 @@ app.get("/loginfrontdesk", function(req, res) {
   res.render(path.join(__dirname, "../views/frontdesk.handlebars"));
 });
 app.get("/frontdesk", isAuthenticated, function(req, res) {
-  res.render(path.join(__dirname, "../views/customer.handlebars"));
+  res.render(path.join(__dirname, "../views/frontdesk.handlebars"));
+});
+
+
+// Login service provider
+app.get("/loginprovider", function(req, res) {
+  if (req.user) {
+    res.redirect("../views/provider.handlebars");
+  }
+  res.render(path.join(__dirname, "../views/provider.handlebars"));
+});
+app.get("/provider", isAuthenticated, function(req, res) {
+  res.render(path.join(__dirname, "../views/provider.handlebars"));
 });
 
 
