@@ -10,9 +10,11 @@ module.exports = (sequelize, DataTypes) => {
     city: DataTypes.STRING,
     state: DataTypes.STRING,
     zip: DataTypes.INTEGER,
-    phone: DataTypes.INTEGER,
-    credit_card: DataTypes.INTEGER,
-    expiration: DataTypes.STRING,
+    phone: DataTypes.STRING,
+    email: DataTypes.STRING,
+    password: DataTypes.STRING,
+    credit_card: DataTypes.STRING,
+    expiration: DataTypes.INTEGER,
     cvc: DataTypes.INTEGER,
     comment: DataTypes.TEXT
   }, {});
@@ -30,4 +32,3 @@ module.exports = (sequelize, DataTypes) => {
   });
   return Customer;
 };
-// exports = module.exports = customer;
