@@ -21,7 +21,7 @@ module.exports = {
         type: Sequelize.DATE
       },
       price: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       comment: {
         type: Sequelize.TEXT

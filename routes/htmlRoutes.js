@@ -25,15 +25,31 @@ module.exports = function(app) {
     console.log('WE HIT THE API api/customerComplete!!!!', req.params.id)
     var customerId = req.params.id
     console.log(customerId);
-        db.Customer.find({
+        db.Customer.findAll({
           where: {
             id: customerId,
           }
         }).then(function(data){
           console.log("------------- i am in html route of customercomplete/:id");
+
+          console.log("I am data: HERERERE")
+          console.log(data);
+          console.log(data[0].dataValues.firstName);
+           res.render("customerComplete",
+           {
+             firstName: data[0].dataValues.firstName,
+             phone: data[0].dataValues.phone,
+             address_1:data[0].dataValues.address_1,
+             address_2:data[0].dataValues.address_2,
+             city:data[0].dataValues.city,
+             zip:data[0].dataValues.zip,
+             state:data[0].dataValues.state,
+          }); 
+
           console.log("I am data: " + data);
           //  res.render("customerComplete",{firstName: data.dataValues.firstName}); 
            res.render("../views/customerComplete.handlebars");
+
          });
   });
 
