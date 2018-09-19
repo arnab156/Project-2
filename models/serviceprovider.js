@@ -15,6 +15,9 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   ServiceProvider.associate = function(models) {
     // associations can be defined here
+    ServiceProvider.hasMany(models.Availability, {
+      onDelete: "cascade"
+    });
   };
   return ServiceProvider;
 };

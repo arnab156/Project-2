@@ -16,8 +16,8 @@
                 <label for="phoneNum"><b>Phone Number</b></label>
                 <input type="text" placeholder="+19997776666" name="phoneNum" id="phone" required>
 
-                <label for="email"><b>Email (Username)</b></label>
-                <input type="email" placeholder="adam@adamfrontdesk.com" name="email" id="email-input" required>
+                {{!-- <label for="email"><b>Email (Username)</b></label>
+                <input type="email" placeholder="adam@adamfrontdesk.com" name="email" id="email-input" required> --}}
 
                 <label for="add1"><b>Address Line 1</b></label>
                 <input type="text" placeholder="Address Line 1" name="add1" id="address_1" required>
@@ -142,12 +142,15 @@
             function submitPost(Post) {
                 $.post("/api/customers/", Post, function (result) {
                     console.log(result, "this is the result from registration.");
-                    alert("You are registered! Please go to Customer Log in!");
-                     //window.location.href = "/"; 
-                     $.get("/api/customerComplete/"+result.id, function(res){
-                        console.log("/api/customerComplete/"+result.id);
-                        console.log(res);
-                     });
+                    //alert("You are registered! Please go to Customer Log in!");
+
+                    console.log('ABOUT TO DO SECOND AJAX!!!!')
+                    window.location.href = "/api/customerComplete/"+result.id; 
+                    
+                     //$.get("/api/customerComplete/"+result.id, function(res){
+                       // console.log("/api/customerComplete/"+result.id);
+                        //console.log(res);
+                     //});
 
                 });
             }

@@ -49,10 +49,19 @@ module.exports = function(app) {
 
 
 
+app.get("/api/serviceproviders/", function(req, res) {
+  console.log('WE HHIT OUR ROUTE!!!!!!')
+  db.ServiceProvider.findAll({}).then(function(data){
+  console.log('this is our stufff', data);
+    res.json(data);
+  })
+});
+
 
 
   // Get all examples
   app.post("/api/serviceproviders/", function(req, res) {
+
     db.ServiceProvider.create(req.body).then(function(testdb) {
       res.json(testdb);
     });
@@ -60,7 +69,7 @@ module.exports = function(app) {
 
   // Create a new example
   app.post("/api/customers/", function(req, res) {
-    
+    console.log('this  i s our customer', req.body);
     db.Customer.create(req.body).then(function(testdb) {
       res.json(testdb);
     });
@@ -77,9 +86,13 @@ module.exports = function(app) {
   // });
 
   // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.json(dbExample);
+  app.delete("/api/serviceprovider/:id", function(req, res) {
+    db.ServiceProvider.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbSP) {
+      res.json(dbSP);
     });
   });
 

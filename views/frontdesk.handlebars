@@ -1,70 +1,215 @@
-<div class="card_fd">
-    <img class = "img_fd" src="https://pixel.nymag.com/imgs/daily/vulture/2018/09/05/mac-miller/04-mac-miller-2.w570.h712.jpg" alt="Avatar">
+{{!-- <h4><b>{{stylist_firstname}}</b></h4>
+<p>{{title}}</p> --}}
+{{!-- <p> {{ServiceProviderFN}}</p> --}}
+
+<div style="display:flex; flex-wrap:wrap; text-align:center;">
+  {{#each serviceprovider}}
+
+  <div class="card_fd">
+    <div><img class="img_fd" src="https://pixel.nymag.com/imgs/daily/vulture/2018/09/05/mac-miller/04-mac-miller-2.w570.h712.jpg"
+        alt="Avatar"></div>
+
     <div class="container_fd">
-        <h4><b>{{stylist_firstname}}</b></h4> 
-        <p>{{title}}</p> 
-        <p> {{availability}}</p>
+      <p><b>{{title}}</b></p>
+      <p>{{firstName}}</p>
     </div>
-</div>
-
-<div class = "footer">
- <a href="#ex2" rel="modal:open"><button class="btn" id="viewClientsBtn"> Clients</button></a>;
- <a href="#ex1" rel="modal:open"><button class="btn" id="viewServiceBtn"> Services</button></a>;
- <a href="#ex3" rel="modal:open"><button class="btn" id="addProviderBtn"> Add Provider</button></a>;
- <a href="#ex3" rel="modal:open"><button class="btn" id="addServiceBtn"> Add Service</button></a>;
- <p><a>Log out</a></p>
-</div>
-
-
-
-  <div id="ex3" class="modal modal-style">
-    <form id="addProviderForm" class="form">
-      <p>ADD PROVIDER HERE.</p>
-      <div>
-        <label for="fname"><b>First Name</b></label>
-        <input type="text" placeholder="Enter First Name" name="fname" id="firstName" required>
-
-        <label for="lname"><b>Last Name</b></label>
-        <input type="text" placeholder="Enter Last Name" name="lname" id="lastName" required>
-
-        <label for="title"><b>Title</b></label>
-        <input type="text" placeholder="Hair Stylist" name="title" id="title" required>
-
-        <label for="add1"><b>Address Line 1</b></label>
-        <input type="text" placeholder="Address Line 1" name="add1" id="address_1" required>
-
-        <label for="add2"><b>Address Line 2</b></label>
-        <input type="text" placeholder="Address Line 2" name="add2" id="address_2" required>
-
-        <label for="city"><b>City</b></label>
-        <input type="text" placeholder="City" name="city" id="city" required>
-
-        <label for="state"><b>State Code</b></label>
-        <input type="text" placeholder="IL" name="state" id="state" required>
-
-        <label for="zip"><b>ZIP</b></label>
-        <input type="text" placeholder="556677" name="zip" id="zip" required>
-
-        <label for="phone"><b>Phone</b></label>
-        <input type="text" placeholder="556677444" name="phone" id="phone" required>
-        
-        <label for="email"><b>Email (Username)</b></label>
-        <input type="email" placeholder="adam@adamfrontdesk.com" name="email" id="email" required>
-
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" id="password" required>
-
-        <button type="submit" id="providerAddBtn">Submit</button>
-        <button type="button" id="providerCancelBtn">Cancel</button>
-      </div>
-    </form>
-{{!-- //add service form --}}
   </div>
-   
-   <script>
+  {{/each}}
+</div>
 
-    $(document).ready(function () {
+<br><br><br><br>
+
+<div class="footer">
+  <a href="#ex2" rel="modal:open"><button class="btn" id="viewClientsBtn"> Clients</button></a>;
+  {{!-- <a href="#ex1" rel="modal:open"><button class="btn" id="viewServiceBtn"> Services</button></a>; --}}
+  <a href="#ex3" rel="modal:open"><button class="btn" id="addProviderBtn"> + Provider</button></a>;
+  <a href="#ex5" rel="modal:open"><button class="btn" id="createAvailability"> + Availability</button></a>;
+  <a href="#ex4" rel="modal:open"><button class="btn" id="addServiceBtn"> + Service</button></a>;
+  <a> <button class="btn" id="customerLogoutBtn" href="/logout">Log-out</button></a>;
+
+
+</div>
+
+<div id="ex5" class="modal modal-style">
+  <h2> ADD Availability</h2>
+  <form id="addAvailability">
+    <div>
+      <label for="timeAvail">Time (MM/DD,HH:MM):</label>
+      <input placeholder="10/22, 13:00" type="text" id="timeAvail">
+      <br />
+      <input type="checkbox" name="Booking" value="Booked" id="bookingStatus"> Booked
+      <div>
+        <label for="category">Select Service Provider:</label>
+        <select class="custom-select" id="SSP">
+
+          {{!-- options are created from db --}}
+
+
+          {{!-- <option value="volvo">Volvo</option> --}}
+          {{!-- <option value="saab">Saab</option> --}}
+          {{!-- <option value="mercedes">Mercedes</option> --}}
+          {{!-- <option value="audi">Audi</option> --}}
+
+        </select>
+      </div>
+      <br />
+      <button type="submit" class="btn btn-success submit">Submit</button>
+    </div>
+  </form>
+</div>
+
+
+
+<div id="ex1" class="modal modal-style">
+  <h2>LIST OF SERVICES</h2>
+</div>
+
+<div id="ex2" class="modal modal-style">
+  <h2>LIST OF CLIENTS</h2>
+</div>
+
+<div id="ex3" class="modal modal-style">
+  <form id="addProviderForm" class="form">
+    <p>ADD PROVIDER HERE.</p>
+    <div>
+      <label for="fname"><b>First Name</b></label>
+      <input type="text" placeholder="Enter First Name" name="fname" id="firstName" required>
+
+      <label for="lname"><b>Last Name</b></label>
+      <input type="text" placeholder="Enter Last Name" name="lname" id="lastName" required>
+
+      <label for="title"><b>Title</b></label>
+      <input type="text" placeholder="Hair Stylist" name="title" id="title" required>
+
+      <label for="add1"><b>Address Line 1</b></label>
+      <input type="text" placeholder="Address Line 1" name="add1" id="address_1" required>
+
+      <label for="add2"><b>Address Line 2</b></label>
+      <input type="text" placeholder="Address Line 2" name="add2" id="address_2" required>
+
+      <label for="city"><b>City</b></label>
+      <input type="text" placeholder="City" name="city" id="city" required>
+
+      <label for="state"><b>State Code</b></label>
+      <input type="text" placeholder="IL" name="state" id="state" required>
+
+      <label for="zip"><b>ZIP</b></label>
+      <input type="text" placeholder="556677" name="zip" id="zip" required>
+
+      <label for="phone"><b>Phone</b></label>
+      <input type="text" placeholder="556677444" name="phone" id="phone" required>
+
+      <label for="email"><b>Email (Username)</b></label>
+      <input type="email" placeholder="adam@adamfrontdesk.com" name="email" id="email" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="text" placeholder="Enter Password" name="psw" id="password" required>
+
+      <button type="submit" id="providerAddBtn">Submit</button>
+      <button type="button" id="providerCancelBtn">Cancel</button>
+    </div>
+  </form>
+</div>
+
+<div id="ex4" class="modal modal-style">
+
+  <form id="addServiceForm" class="form">
+    <label for="newService"><b>ENTER NEW SERVICE</b></label>
+    <input type="text" placeholder="Waxing" name="newService" id="newService" required>
+
+    <button type="submit" id="serviceAddBtn">Submit</button>
+    <button type="button" id="serviceCancelBtn">Cancel</button>
+  </form>
+  {{!-- //add service form --}}
+</div>
+
+<script>
+
+  $(document).ready(function () {
+    var $firstName = $("#firstName");
+    var $lastName = $("#lastName");
+    var $title = $("#title");
+    var $address_1 = $("#address_1");
+    var $address_2 = $("#address_2");
+    var $city = $("#city");
+    var $state = $("#state");
+    var $zip = $("#zip");
+    var $phone = $("#phone");
+    var $email = $("#email");
+    var $password = $("#password");
+    //var addProviderForm = $("#addProviderForm");
+
+    $("#addProviderForm").on("submit", handleFormSubmit);
+
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      //alert("this function handleFormSubmit in frontdesk")
+      //$("#registerMsg").show();
+      var newServiceProvider = {
+        firstName: $firstName.val().trim(),
+        lastName: $lastName.val().trim(),
+        title: $title.val().trim(),
+        address_1: $address_1.val().trim(),
+        address_2: $address_2.val().trim(),
+        city: $city.val().trim(),
+        state: $state.val().trim(),
+        zip: $zip.val().trim(),
+        phone: $phone.val().trim(),
+        email: $email.val().trim(),
+        password: $password.val().trim(),
+      };
+
+      submitnewServiceProvider(newServiceProvider);
+
+      function submitnewServiceProvider(post) {
+        alert("Service Provider is about to be registered!");
+        $.post("/api/serviceproviders/", post, function () {
+          alert("Service Provider is registered!");
+          //window.location.href = "/frontdesk"; 
+        });
+      }
+    }
+
+
+$.get('/api/serviceproviders', function(data) {
+  console.log('this is dudes we got back!!!', data);
+
+
+  for (var i=0; i<data.length;i++){
+    $('#SSP').append($('<option/>').val('').text(data[i].firstName));
+  }
+
+})
+
+  //make a db call  to get the names
+  //loop over those results
+  //with each of the those results create a new option tag
+//db.ServiceProvider.find({}).then(function(data)){
+//console.log('alll service providers!!!!!!!',data);
+  //for (var i=0; i<data.length;i++){
+    //$('#SSP').append($('<option/>').val('').text(data[i].firstName));
+  //}
+
+//});
     
-    // add to service provider
-     });
-   </script>
+
+
+
+
+
+db.Customer.find({
+          where: {
+            id: customerId,
+          }
+        }).then(function(data){
+          console.log("------------- i am in html route of customercomplete/:id");
+          console.log("I am data: " + data.dataValues)
+           res.render("customerComplete",{firstName: data.dataValues.firstName}); 
+         });
+
+
+  });
+
+
+
+</script>

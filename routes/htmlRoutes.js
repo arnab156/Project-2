@@ -22,16 +22,18 @@ module.exports = function(app) {
 
 
   app.get("/api/customerComplete/:id", isAuthenticated, function(req, res) {
+    console.log('WE HIT THE API api/customerComplete!!!!', req.params.id)
     var customerId = req.params.id
     console.log(customerId);
-        db.Customer.findOne({
-          where :{
-            id : customerId,
+        db.Customer.find({
+          where: {
+            id: customerId,
           }
         }).then(function(data){
-          console.log("i am in html route of customercomplete/:id"+data);
-          res.render("customerComplete",data); 
-        });
+          console.log("------------- i am in html route of customercomplete/:id");
+          console.log("I am data: " + data.dataValues)
+           res.render("customerComplete",{firstName: data.dataValues.firstName}); 
+         });
   });
 
   // app.get("/api/customerComplete", function(req, res) {
@@ -129,12 +131,12 @@ module.exports = function(app) {
       // where: {
       //   id: req.params.id
       //   }
+      include: [db.Availability]
     }).then(function(ServiceProvider) {
       res.render("frontdesk", {
         serviceprovider:ServiceProvider,
         title: ServiceProvider.title,
-        stylist_firstname: ServiceProvider.firstName,
-
+        firstName: ServiceProvider.firstName,
       });
     });
 
