@@ -1,4 +1,6 @@
 'use strict';
+var bcrypt = require("bcrypt-nodejs");
+
 module.exports = (sequelize, DataTypes) => {
   const Customer = sequelize.define('Customer', {
     firstName: DataTypes.STRING,
@@ -19,5 +21,14 @@ module.exports = (sequelize, DataTypes) => {
   Customer.associate = function(models) {
     // associations can be defined here
   };
+
+  Customer.prototype.validPassword = function(password) {
+    return bcrypt.compareSync(password, this.password);
+  };
+  // Hooks are automatic methods that run during various phases of theCustomer Model lifecycle
+  // In this case, before aCustomer is created, we will automatically hash their password
+ Customer.hook("beforeCreate", function(user) {
+    Customer.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
+  });
   return Customer;
 };
