@@ -8,13 +8,16 @@ module.exports = (sequelize, DataTypes) => {
     address_2: DataTypes.STRING,
     city: DataTypes.STRING,
     state: DataTypes.STRING,
-    zip: DataTypes.INTEGER,
-    phone: DataTypes.INTEGER,
+    zip: DataTypes.STRING,
+    phone: DataTypes.STRING,
     email: DataTypes.STRING,
     password: DataTypes.STRING
   }, {});
   ServiceProvider.associate = function(models) {
     // associations can be defined here
+    ServiceProvider.hasMany(models.Availability, {
+      onDelete: "cascade"
+    });
   };
   return ServiceProvider;
 };

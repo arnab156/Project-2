@@ -13,6 +13,7 @@ $(document).ready(function() {
     };
 
     if (!userData.email || !userData.password) {
+      console.log("Something wrong with the user data");
       return;
     }
 
@@ -31,7 +32,16 @@ $(document).ready(function() {
       email: email,
       password: password
     }).then(function(data) {
-      window.location.replace(data);
+      console.log(data);
+      alert("hi");
+      // window.location.href = "/api/customerComplete";
+
+
+      $.get("/api/customerComplete/"+data.id, function(res){
+        console.log("/api/customerComplete/"+data.id);
+           //console.log(res);
+    });
+
       // If there's an error, log the error
     }).catch(function(err) {
       console.log(err);
