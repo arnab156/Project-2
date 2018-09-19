@@ -73,4 +73,25 @@ db.sequelize.sync(syncOptions).then(function() {
   });
 });
 
+
+
+
+// Download the helper library from https://www.twilio.com/docs/node/install
+// Your Account Sid and Auth Token from twilio.com/console
+
+// const accountSid = TWILIO_ACCOUNT_SID;
+// const authToken = TWILIO_AUTH_TOKEN;
+// const client = require('twilio')(accountSid, authToken);
+
+// client.messages
+//   .create({
+//      body: 'This is the ship that made the Kessel Run in fourteen parsecs?',
+//      from: TWILIO_PHONE_NUMBER,
+//      to: '+'
+//    })
+//   .then(message => console.log(message.sid))
+//   .done();
+
+
+
 module.exports = app;
