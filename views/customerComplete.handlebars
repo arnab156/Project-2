@@ -3,8 +3,8 @@
     <p> YOUR COMPLETED PROFILE</p>
 <img id="profileimg" src="https://upload.wikimedia.org/wikipedia/commons/4/41/Profile_portrait_of_man_with_mustache_and_goatee.jpg" alt="Avatar"> 
 
-
-<h1> Hello,  {{firstName}}</h1>
+<h2>Welcome <span class="member-name"></span></h2>
+{{!-- <h1> Hello, {{email}}, {{firstName}}</h1> --}}
 <p> Contact Information: </p>
 <br>
 <p> Phone: {{phone}}</p>
@@ -60,8 +60,13 @@
 </div>
 
 </div>
-
-
+<div class="footer">
+    <a href="#ex1" rel="modal:open"><button class="btn" id="viewServiceBtn"> Services</button></a>;
+    <a href="#ex1" rel="modal:open"><button class="btn" id="viewStylistBtn">Stylists</button></a>;
+    {{!-- <a> <button class="btn" id="customerLogoutBtn" href="/index">Log-out</button></a>; --}}
+    <button class="btn" id="customerLogoutBtn" ><a href="/logout">Log-out</a></button>
+</div>
+<script type="text/javascript" src="js/members.js"></script>
 <script>
 
   {{!-- picker stuff --}}
@@ -97,8 +102,8 @@
         pickerTime.open()
 
         
-$('.datepicker').pickadate();
-$('.timepicker').pickatime();
+{{!-- $('.datepicker').pickadate();
+$('.timepicker').pickatime(); --}}
 
 
 </script>
