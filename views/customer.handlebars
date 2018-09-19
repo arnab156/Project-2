@@ -14,47 +14,7 @@
         </div>
 
 
-        {{!-- picker stuff --}}
-
-<div id="datetimepicker">
-
-        <section class="section">
-
-        <form>
-            <fieldset>
-                <h3><label for="input_01">Pick a date. Go ahead...</label></h3>
-
-                <input
-                    id="input_01"
-                    class="datepicker"
-                    name="date"
-                    type="text"
-                    autofocuss
-                    value="14 August, 2014"
-                    data-valuee="2014-08-08">
-
-                <br><br><br><br><br>
-                <!-- <button type="button">Disable all dates</button>
-                <input class="button" type="submit" value="open"> -->
-            </fieldset>
-        </form>
-        <form>
-            <fieldset>
-                <h3><label for="inputtime">Pick a time. Go ahead...</label></h3>
-                <input
-                    id="inputtime"
-                    class="timepicker"
-                    type="time"
-                    name="time"
-                    autofocuss
-                    value="2:30 AM"
-                    data-value="0:00">
-            </fieldset>
-        </form>
-
-
-    </section>
-</div>
+      
 
     {{!-- <img id="profileimg" src="https://upload.wikimedia.org/wikipedia/commons/4/41/Profile_portrait_of_man_with_mustache_and_goatee.jpg"
         alt="Avatar"> --}}
@@ -240,41 +200,7 @@
 
 
 
-{{!-- picker stuff --}}
 
-{{!-- date --}}
-        var $inputDate = $( '.datepicker' ).pickadate({
-            formatSubmit: 'yyyy/mm/dd',
-            min: [201, 7, 14],
-            container: '#container',
-            // editable: true,
-            closeOnSelect: false,
-            closeOnClear: false,
-        })
-
-        var pickerDate = $inputDate.pickadate('picker')
-        {{!-- picker.set('select', '14 September, 2018') --}}
-        pickerDate.open() 
-
-        {{!-- $('button').on('click', function() {
-            picker.set('disable', true); --}}
-        });
-{{!-- time --}}
-        var $inputTime = $('.timepicker' ).pickatime({
-            format: 'h:i A',
-            interval: 60,
-             min: [7,30],
-            max: [14,30],
-            closeOnSelect: false,
-  closeOnClear: false,
-  clear: ''
-        })
-        var pickerTime = $inputTime.pickatime('picker')
-        pickerTime.open()
-
-        
-$('.datepicker').pickadate();
-$('.timepicker').pickatime();
     </script>
 <script type="text/javascript" src="public/js/members.js"></script>
 

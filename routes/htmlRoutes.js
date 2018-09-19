@@ -31,8 +31,9 @@ module.exports = function(app) {
           }
         }).then(function(data){
           console.log("------------- i am in html route of customercomplete/:id");
-          console.log("I am data: " + data.dataValues)
-           res.render("customerComplete",{firstName: data.dataValues.firstName}); 
+          console.log("I am data: " + data);
+          //  res.render("customerComplete",{firstName: data.dataValues.firstName}); 
+           res.render("../views/customerComplete.handlebars");
          });
   });
 
@@ -48,15 +49,15 @@ module.exports = function(app) {
   app.get("/login", function(req, res) {
     // If the user already has an account send them to the members page
     if (req.user) {
-      res.redirect("../views/customer.handlebars");
+      res.redirect("../views/customerComplete.handlebars");
     }
-    res.render(path.join(__dirname, "../views/customer.handlebars"));
+    res.render(path.join(__dirname, "../views/customerComplete.handlebars"));
   });
 
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
   app.get("/members", isAuthenticated, function(req, res) {
-    res.render(path.join(__dirname, "../views/customer.handlebars"));
+    res.render(path.join(__dirname, "../views/customerComplete.handlebars"));
   });
 
   app.get("/logout", function(req, res) {
