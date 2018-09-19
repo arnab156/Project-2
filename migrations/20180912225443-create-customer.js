@@ -32,20 +32,14 @@ module.exports = {
       phone: {
         type: Sequelize.STRING
       },
-      email: {
-        type: Sequelize.STRING
-      },
-      password: {
-        type: Sequelize.STRING
-      },
       credit_card: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       expiration: {
         type: Sequelize.STRING
       },
       cvc: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       comment: {
         type: Sequelize.STRING

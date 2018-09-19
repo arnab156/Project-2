@@ -1,7 +1,3 @@
-{{!-- <h4><b>{{stylist_firstname}}</b></h4>
-<p>{{title}}</p> --}}
-{{!-- <p> {{ServiceProviderFN}}</p> --}}
-
 <div style="display:flex; flex-wrap:wrap; text-align:center;">
   {{#each serviceprovider}}
 
@@ -106,7 +102,7 @@
       <input type="text" placeholder="Enter Password" name="psw" id="password" required>
 
       <button type="submit" id="providerAddBtn">Submit</button>
-      <button type="button" id="providerCancelBtn">Cancel</button>
+      {{!-- <button rel="modal:close" type="button" id="providerCancelBtn">Cancel</button> --}}
     </div>
   </form>
 </div>
@@ -118,7 +114,7 @@
     <input type="text" placeholder="Waxing" name="newService" id="newService" required>
 
     <button type="submit" id="serviceAddBtn">Submit</button>
-    <button type="button" id="serviceCancelBtn">Cancel</button>
+    {{!-- <button type="button" id="serviceCancelBtn">Cancel</button> --}}
   </form>
   {{!-- //add service form --}}
 </div>

@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": "PassWord!",
-    "database": "salon_db",
+    "password": "Letmein@156",
+    "database": "testdb",
     "host": "localhost",
     "dialect": "mysql"
   },

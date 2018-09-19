@@ -18,8 +18,7 @@ $(document).ready(function() {
     }
 
     console.log(userData);
-    
-
+  
     // If we have an email and password we run the loginUser function and clear the form
     loginUser(userData.email, userData.password);
     emailInput.val("");
@@ -32,15 +31,16 @@ $(document).ready(function() {
       email: email,
       password: password
     }).then(function(data) {
-      console.log(data);
+      console.log("MMMMMMM%%%%%%",data);
       alert("hi");
+      window.location.replace(data);
       // window.location.href = "/api/customerComplete";
 
 
-      $.get("/api/customerComplete/"+data.id, function(res){
-        console.log("/api/customerComplete/"+data.id);
-           //console.log(res);
-    });
+    //   $.get("/api/customerComplete/"+data.id, function(res){
+    //     console.log("/api/customerComplete/"+data.id);
+    //        //console.log(res);
+    // });
 
       // If there's an error, log the error
     }).catch(function(err) {

@@ -9,13 +9,13 @@ module.exports = (sequelize, DataTypes) => {
     address_2: DataTypes.STRING,
     city: DataTypes.STRING,
     state: DataTypes.STRING,
-    zip: DataTypes.INTEGER,
+    zip: DataTypes.STRING,
     phone: DataTypes.STRING,
     email: DataTypes.STRING,
     password: DataTypes.STRING,
     credit_card: DataTypes.STRING,
-    expiration: DataTypes.INTEGER,
-    cvc: DataTypes.INTEGER,
+    expiration: DataTypes.STRING,
+    cvc: DataTypes.STRING,
     comment: DataTypes.TEXT
   }, {});
   Customer.associate = function(models) {
