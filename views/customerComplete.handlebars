@@ -1,5 +1,5 @@
 <div class="card">
-    <p> YOUR COMPLETED PROFILE</p>
+    {{!-- <p> YOUR COMPLETED PROFILE</p> --}}
     <img id="profileimg" src="https://upload.wikimedia.org/wikipedia/commons/4/41/Profile_portrait_of_man_with_mustache_and_goatee.jpg"
         alt="Avatar">
 
@@ -23,10 +23,12 @@
                 <input type="datetime-local" id="appointment-time" name="appointment-time" value="2018-06-12T19:30" min="2018-09-07T00:00"
                     max="2018-11-18T00:00" required />
             </div>
+            <div style="width:50%">
+                <label for="SSP">Select Service Provider:</label>
+                <select class="custom-select" id="SSP"> </select>
+            </div>
 
-            <label for="SSP">Select Service Provider:</label>
-            <select class="custom-select" id="SSP"> </select>
-            <br> <br>
+            <br>
             <button type="submit" id="makeAppointmentBtn" class="btn">Reserve</button>
         </fieldset>
         <br><br><br><br>
@@ -47,10 +49,10 @@
 <div id="ex1" class="modal modal-style">
     <div id="allStylists">
         <div id="SSP2">
-            <h1 > Our Stylists</h1>
+            <h1> Our Stylists</h1>
         </div>
-        
-        
+
+
     </div>
 </div>
 
@@ -66,6 +68,8 @@
                 $('#SSP').append($('<option/>').val('').text(data[i].firstName));
                 $('#SSP2').append($('<h3/>').val('').text(data[i].firstName));
                 $('#SSP2').append($('<p style="color:white;">').val('').text(data[i].title));
+                $('#SSP2').append('<li style ="list-style: none;"><img class = "img_fd" src="' + data[i].url + '" /></li>');
+                $('#SSP2').append($('<hr><br>'));
             }
         });
 
