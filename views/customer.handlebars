@@ -3,9 +3,6 @@
 
         <img id="profileimg" src="https://upload.wikimedia.org/wikipedia/commons/4/41/Profile_portrait_of_man_with_mustache_and_goatee.jpg" alt="Avatar">
         <div class="container_fd">
-            <h4><b>{{note}}, {{customerFN}}</b></h4> 
-            <p> You can make your appointment here</p>
-            {{!-- form --}}
             <p>{{dateTime}}</p>
             <h4>{{msg}}</h4>
             <p>{{service}}</p>
@@ -14,10 +11,7 @@
         </div>
 
 
-      
-
-    {{!-- <img id="profileimg" src="https://upload.wikimedia.org/wikipedia/commons/4/41/Profile_portrait_of_man_with_mustache_and_goatee.jpg"
-        alt="Avatar"> --}}
+    
     <div class="container_fd">
         <h4><b>Welcome! Please complete your profile</b></h4>
         <p> </p>
@@ -73,26 +67,6 @@
 </div>
 
 
-    
-
-
-
-
-    <div id="ex1" class="modal modal-style">
-        <div id="allStylists">
-            {{#each stylists}}
-                    {{!-- <li data-id="{{this.id}}" class="list-group-item">
-                        <a href="example/{{this.id}}">{{this.text}}</a>
-                        <button class="btn btn-danger float-right delete">ｘ</button>
-                    </li> --}}
-            {{/each}}
-
-                <p> POPULATE ALL THE STYLISTS HERE & AVAILABILITY</p>
-        </div>
-        <div id="allServices">
-                <p> POPULATE ALL THE SERVICES AND COST</p>
-        </div>
-
 <div id="ex1" class="modal modal-style">
     <div id="allStylists">
         {{#each stylists}}
@@ -113,8 +87,7 @@
 <div class="footer">
     <a href="#ex1" rel="modal:open"><button class="btn" id="viewServiceBtn"> Services</button></a>;
     <a href="#ex1" rel="modal:open"><button class="btn" id="viewStylistBtn">Stylists</button></a>;
-    <a> <button class="btn" id="customerLogoutBtn" href="/logout">Log-out</button></a>;
-</div>
+     <button class="btn" id="customerLogoutBtn" ><a href="/logout">Log-out</a></button>;
 
 </body>
 <script>

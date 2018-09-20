@@ -53,7 +53,7 @@ module.exports = function(app) {
 app.get("/api/serviceproviders/", function(req, res) {
   console.log('WE HHIT OUR ROUTE!!!!!!')
   db.ServiceProvider.findAll({}).then(function(data){
-  console.log('this is our stufff', data);
+  console.log('this is our stufff in api route service provider', data);
     res.json(data);
   })
 });

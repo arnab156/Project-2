@@ -32,7 +32,7 @@ $(document).ready(function() {
       password: password
     }).then(function(data) {
       console.log("MMMMMMM%%%%%%",data);
-      alert("hi");
+      // alert("hi");
       window.location.replace(data);
       // window.location.href = "/api/customerComplete";
 
