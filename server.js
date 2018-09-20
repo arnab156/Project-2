@@ -9,9 +9,19 @@ var mysql = require('mysql2');
 
 // Requiring passport as we've configured it
 var passport = require("./config/passport");
+
 // var path= require('path');
 
 var db = require("./models");
+
+
+
+const accountSid = 'AC6c056307e73f78bf2dafa38531ec18b2';
+const authToken = 'c94e8baaaceadab955ed912ddeb472f5';
+const client = require('twilio')(accountSid, authToken);
+
+
+
 
 var app = express();
 var PORT = process.env.PORT || 3000;

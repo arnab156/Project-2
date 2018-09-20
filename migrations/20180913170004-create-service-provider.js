@@ -17,6 +17,9 @@ module.exports = {
       title: {
         type: Sequelize.STRING
       },
+      url: {
+        type: Sequelize.STRING
+      },
       address_1: {
         type: Sequelize.STRING
       },

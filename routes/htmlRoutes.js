@@ -165,6 +165,7 @@ module.exports = function (app) {
         serviceprovider: ServiceProvider,
         title: ServiceProvider.title,
         firstName: ServiceProvider.firstName,
+        url:ServiceProvider.url
       });
     });
 
