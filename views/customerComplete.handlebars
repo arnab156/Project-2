@@ -16,7 +16,16 @@
 
 <h1> Hello  {{firstName}}</h1>
 
-    {{!-- picker stuff --}}
+ 
+</div>
+<div class="footer">
+    <a href="#ex1" rel="modal:open"><button class="btn" id="viewServiceBtn"> Services</button></a>;
+    <a href="#ex1" rel="modal:open"><button class="btn" id="viewStylistBtn">Stylists</button></a>;
+    {{!-- <a> <button class="btn" id="customerLogoutBtn" href="/index">Log-out</button></a>; --}}
+    <button class="btn" id="customerLogoutBtn" ><a href="/logout">Log-out</a></button>
+</div>
+
+   {{!-- picker stuff --}}
 
 <div id="datetimepicker">
 
@@ -50,7 +59,10 @@
                     name="time"
                     autofocuss
                     value="2:30 AM"
-                    data-value="0:00">
+                    data-value="0:00"
+                    disable: [
+    { from: [2,0], to: [5,30] }
+  ]>
             </fieldset>
         </form>
 
@@ -59,13 +71,7 @@
 
 </div>
 
-</div>
-<div class="footer">
-    <a href="#ex1" rel="modal:open"><button class="btn" id="viewServiceBtn"> Services</button></a>;
-    <a href="#ex1" rel="modal:open"><button class="btn" id="viewStylistBtn">Stylists</button></a>;
-    {{!-- <a> <button class="btn" id="customerLogoutBtn" href="/index">Log-out</button></a>; --}}
-    <button class="btn" id="customerLogoutBtn" ><a href="/logout">Log-out</a></button>
-</div>
+
 <script type="text/javascript" src="js/members.js"></script>
 <script>
 
@@ -102,8 +108,7 @@
         pickerTime.open()
 
         
-{{!-- $('.datepicker').pickadate();
-$('.timepicker').pickatime(); --}}
+
 
 
 </script>
