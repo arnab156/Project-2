@@ -65,13 +65,22 @@
         $.get('/api/serviceproviders', function (data) {
             console.log('this is dudes we got back!!!', data);
             for (var i = 0; i < data.length; i++) {
-                $('#SSP').append($('<option/>').val('').text(data[i].firstName));
+                $('#SSP').append($('<option/>').text(data[i].firstName));
                 $('#SSP2').append($('<h3/>').val('').text(data[i].firstName));
                 $('#SSP2').append($('<p style="color:white;">').val('').text(data[i].title));
                 $('#SSP2').append('<li style ="list-style: none;"><img class = "img_fd" src="' + data[i].url + '" /></li>');
                 $('#SSP2').append($('<hr><br>'));
             }
         });
+
+    });
+
+    $("#makeAppointmentBtn").click(function () {
+        var dateTime = document.querySelector('input[type="datetime-local"]');
+        //var SSP= $("SSP select").val();
+
+        console.log(dateTime.value);
+
 
     });
 
