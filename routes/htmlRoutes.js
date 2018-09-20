@@ -8,11 +8,11 @@ var path = require("path");
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 // Login end
 
-module.exports = function(app) {
+module.exports = function (app) {
 
 
   // Login start
-  app.get("/", function(req, res) {
+  app.get("/", function (req, res) {
     // If the user already has an account send them to the members page
     if (req.user) {
       res.redirect("../views/customerComplete.handlebars");
@@ -21,31 +21,47 @@ module.exports = function(app) {
   });
 
 
-  app.get("/api/customerComplete/:id", isAuthenticated, function(req, res) {
+  app.get("/api/customerComplete/:id", isAuthenticated, function (req, res) {
     console.log('WE HIT THE API api/customerComplete!!!!', req.params.id)
     var customerId = req.params.id
     console.log(customerId);
-        db.Customer.findAll({
-          where: {
-            id: customerId,
-          }
-        }).then(function(data){
-          console.log("------------- i am in html route of customercomplete/:id");
-          console.log("I am data: HERERERE")
-          console.log(data);
-          console.log(data[0].dataValues.firstName);
-           res.render("customerComplete",
-           {
-             firstName: data[0].dataValues.firstName,
-             phone: data[0].dataValues.phone,
-             address_1:data[0].dataValues.address_1,
-             address_2:data[0].dataValues.address_2,
-             city:data[0].dataValues.city,
-             zip:data[0].dataValues.zip,
-             state:data[0].dataValues.state,
-          }); 
-           
-         });
+    db.Customer.findAll({
+      where: {
+        id: customerId,
+      }
+    }).then(function (data) {
+      console.log("------------- i am in html route of customercomplete/:id");
+      console.log("I am data: HERERERE")
+      console.log(data);
+      console.log(data[0].dataValues.firstName);
+
+
+
+      res.render("customerComplete",
+        {
+          firstName: data[0].dataValues.firstName,
+          phone: data[0].dataValues.phone,
+          address_1: data[0].dataValues.address_1,
+          address_2: data[0].dataValues.address_2,
+          city: data[0].dataValues.city,
+          zip: data[0].dataValues.zip,
+          state: data[0].dataValues.state,
+        });
+
+    });
+
+    // db.ServiceProvider.findAll({}).then(function (ServiceProvider) {
+    //   res.render("customerComplete", {
+    //     serviceprovider: ServiceProvider,
+    //     title: ServiceProvider.title,
+    //     firstName_SP: ServiceProvider.firstName,
+    //   });
+    // });
+
+
+
+
+
   });
 
   // app.get("/api/customerComplete", function(req, res) {
@@ -57,7 +73,7 @@ module.exports = function(app) {
 
 
 
-  app.get("/login", function(req, res) {
+  app.get("/login", function (req, res) {
     // If the user already has an account send them to the members page
     if (req.user) {
       res.redirect("../views/customer.handlebars");
@@ -67,23 +83,23 @@ module.exports = function(app) {
 
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
-  app.get("/members", isAuthenticated, function(req, res) {
+  app.get("/members", isAuthenticated, function (req, res) {
     res.render(path.join(__dirname, "../views/customer.handlebars"));
   });
 
-  app.get("/logout", function(req, res) {
+  app.get("/logout", function (req, res) {
     res.render(path.join(__dirname, "../views/index.handlebars"));
   });
 
-// Login end
+  // Login end
 
   // Load index page
-  app.get("/customer/:id", function(req, res) {
+  app.get("/customer/:id", function (req, res) {
     db.Customer.findOne({
       where: {
         id: req.params.id
-        }
-    }).then(function(Customer) {
+      }
+    }).then(function (Customer) {
       res.render("customer", {
         note: "Welcome!",
         customerFN: Customer.firstName,
@@ -116,8 +132,8 @@ module.exports = function(app) {
   });
 
   // Load example page and pass in an example by id
-  app.get("/example/:id", function(req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
+  app.get("/example/:id", function (req, res) {
+    db.Example.findOne({ where: { id: req.params.id } }).then(function (dbExample) {
       res.render("example", {
         example: dbExample
       });
@@ -129,14 +145,14 @@ module.exports = function(app) {
   //   res.render("404");
   // });
 
-    // Render 404 page for any unmatched routes
+  // Render 404 page for any unmatched routes
 
-    // Hello world
+  // Hello world
   // app.get("/", function(req, res) {
   //   res.render("index");
   // });
 
-  app.get("/frontdesk", function(req, res) {
+  app.get("/frontdesk", function (req, res) {
 
 
     db.ServiceProvider.findAll({
@@ -144,9 +160,9 @@ module.exports = function(app) {
       //   id: req.params.id
       //   }
       include: [db.Availability]
-    }).then(function(ServiceProvider) {
+    }).then(function (ServiceProvider) {
       res.render("frontdesk", {
-        serviceprovider:ServiceProvider,
+        serviceprovider: ServiceProvider,
         title: ServiceProvider.title,
         firstName: ServiceProvider.firstName,
       });

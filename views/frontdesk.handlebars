@@ -21,7 +21,7 @@
   <a href="#ex3" rel="modal:open"><button class="btn" id="addProviderBtn"> + Provider</button></a>;
   <a href="#ex5" rel="modal:open"><button class="btn" id="createAvailability"> + Availability</button></a>;
   <a href="#ex4" rel="modal:open"><button class="btn" id="addServiceBtn"> + Service</button></a>;
-  <a> <button class="btn" id="customerLogoutBtn" href="/logout">Log-out</button></a>;
+  <button class="btn" id="customerLogoutBtn"><a href="/logout">Log-out</a></button>;
 
 
 </div>
@@ -133,7 +133,6 @@
     var $phone = $("#phone");
     var $email = $("#email");
     var $password = $("#password");
-    //var addProviderForm = $("#addProviderForm");
 
     $("#addProviderForm").on("submit", handleFormSubmit);
 
@@ -156,55 +155,68 @@
       };
 
       submitnewServiceProvider(newServiceProvider);
+      location.reload();
 
-      function submitnewServiceProvider(post) {
-        alert("Service Provider is about to be registered!");
-        $.post("/api/serviceproviders/", post, function () {
-          alert("Service Provider is registered!");
-          //window.location.href = "/frontdesk"; 
-        });
-      }
+    }
+
+    function submitnewServiceProvider(post) {
+      //alert("Service Provider is about to be registered!");
+      $.post("/api/serviceproviders/", post, function () {
+        alert("Service Provider is registered!");
+      });
     }
 
 
-$.get('/api/serviceproviders', function(data) {
-  console.log('this is dudes we got back!!!', data);
+  $.get('/api/serviceproviders', function (data) {
+    console.log('this is dudes we got back!!!', data);
+    for (var i = 0; i < data.length; i++) {
+      $('#SSP').append($('<option/>').val('').text(data[i].firstName));
+    }
+
+  });
 
 
-  for (var i=0; i<data.length;i++){
-    $('#SSP').append($('<option/>').val('').text(data[i].firstName));
-  }
 
-})
+
+  db.Customer.find({
+    where: {
+      id: customerId,
+    }
+  }).then(function (data) {
+    console.log("------------- i am in html route of customercomplete/:id");
+    console.log("I am data: " + data.dataValues)
+    res.render("customerComplete", { firstName: data.dataValues.firstName });
+  });
+
+
+  });
+
+
+  //var addProviderForm = $("#addProviderForm");
+
+
+
+
+
+
+
+
+
 
   //make a db call  to get the names
   //loop over those results
   //with each of the those results create a new option tag
-//db.ServiceProvider.find({}).then(function(data)){
-//console.log('alll service providers!!!!!!!',data);
+  //db.ServiceProvider.find({}).then(function(data)){
+  //console.log('alll service providers!!!!!!!',data);
   //for (var i=0; i<data.length;i++){
-    //$('#SSP').append($('<option/>').val('').text(data[i].firstName));
+  //$('#SSP').append($('<option/>').val('').text(data[i].firstName));
   //}
 
-//});
-    
+  //});
 
 
 
 
-
-db.Customer.find({
-          where: {
-            id: customerId,
-          }
-        }).then(function(data){
-          console.log("------------- i am in html route of customercomplete/:id");
-          console.log("I am data: " + data.dataValues)
-           res.render("customerComplete",{firstName: data.dataValues.firstName}); 
-         });
-
-
-  });
 
 
 

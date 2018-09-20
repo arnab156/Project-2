@@ -6,7 +6,7 @@
   <div id="right">
     <ul>
       <li>
-        <img class ="logo" src="https://www.designfreelogoonline.com/wp-content/uploads/2014/12/00546-Square-levels-logo-design-free-logos-online-02.png">
+        <img class="logo" src="https://www.designfreelogoonline.com/wp-content/uploads/2014/12/00546-Square-levels-logo-design-free-logos-online-02.png">
         <span>
           <strong>Service Provider</strong>
           <p><a href="#ex3" rel="modal:open">Log in & Forgot password</a></p>
@@ -14,7 +14,7 @@
       </li>
 
       <li id="customerBtn">
-        <img class ="logo" src="https://www.designfreelogoonline.com/wp-content/uploads/2014/12/00546-Square-levels-logo-design-free-logos-online-02.png">
+        <img class="logo" src="https://www.designfreelogoonline.com/wp-content/uploads/2014/12/00546-Square-levels-logo-design-free-logos-online-02.png">
         <span>
           <strong>Customer</strong>
           <p><a href="#ex1" rel="modal:open">Log in & Register</a></p>
@@ -22,7 +22,7 @@
       </li>
 
       <li>
-        <img class ="logo" src="https://www.designfreelogoonline.com/wp-content/uploads/2014/12/00546-Square-levels-logo-design-free-logos-online-02.png">
+        <img class="logo" src="https://www.designfreelogoonline.com/wp-content/uploads/2014/12/00546-Square-levels-logo-design-free-logos-online-02.png">
         <span>
           <strong>Front Desk</strong>
           <p><a href="#ex2" rel="modal:open">Log in</a></p>
@@ -56,44 +56,12 @@
 
     <form id="registerForm" class="signup form">
       <div>
-        {{!-- <label for="fname"><b>First Name</b></label>
-        <input type="text" placeholder="Enter First Name" name="fname" id="firstName" required>
-
-        <label for="lname"><b>Last Name</b></label>
-        <input type="text" placeholder="Enter Last Name" name="lname" id="lastName" required>
-
-        <label for="phoneNum"><b>Phone Number</b></label>
-        <input type="text" placeholder="+19997776666" name="phoneNum" id="phone" required> --}}
 
         <label for="email"><b>Email (Username)</b></label>
         <input type="email" placeholder="adam@adamfrontdesk.com" name="email" id="email-input" required>
 
         <label for="psw"><b>Password</b></label>
         <input type="password" placeholder="Enter Password" name="psw" id="password-input" required>
-        
-        {{!-- <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" id="password-confirm" required>
-
-        <label for="add1"><b>Address Line 1</b></label>
-        <input type="text" placeholder="Address Line 1" name="add1" id="address_1" required>
-
-        <label for="add2"><b>Address Line 2</b></label>
-        <input type="text" placeholder="Address Line 2" name="add2" id="address_2" required>
-
-        <label for="city"><b>City</b></label>
-        <input type="text" placeholder="City" name="city" id="city" required>
-
-        <label for="state"><b>State Code</b></label>
-        <input type="text" placeholder="IL" name="state" id="state" required>
-
-        <label for="zip"><b>ZIP</b></label>
-        <input type="text" placeholder="556677" name="zip" id="zip" required>
-
-        <label for="CCI"><b>Credit Card Info</b></label>
-        <input type="text" placeholder="0000 1111 1111 3333" name="CCI" id="credit_card" required>
-
-        <label for="CCE"><b>Credit Card Expiration</b></label>
-        <input type="text" placeholder="00/21" name="CCE" id="expiration" required>
 
         <label for="CVC"><b>Credit Card CVC</b></label>
         <input type="text" placeholder="123" name="CVC" id="cvc" required>
@@ -114,14 +82,15 @@
     <form id="frontDeskLoginForm" class="form">
       <p>FRONT DESK LOG IN ONLY.</p>
       <div>
-        <label for="uname"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="uname" id="frontDeskName" class="member-name" required>
-        <label for="pass"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="pass" id="frontDeskPass" required>
-        <button type="button" id="serviceProviderLogin" >Login</button>
+        <label for="frontDeskName"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" value = "arnab" name="frontDeskName" id="frontDeskUser" class="member-name"
+          required>
+        <label for="frontDeskPass"><b>Key</b></label>
+        <input type="password" placeholder="Enter Password" name="frontDeskPass" id="frontDeskPass" required>
+        <button type="button" id="frontDeskLogin">Login</button>
       </div>
     </form>
-    
+
   </div>
 
   <div id="ex3" class="modal modal-style">
@@ -129,9 +98,9 @@
       <p>SERVICE PROVIDER LOG IN </p>
       <div>
         <label for="uname"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="uname" id="ServiceProviderName" required>
-        <label for="pass"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="pass" id="ServiceProviderPass" required>
+        <input type="text" placeholder="Enter Username" name="uname" id="ServiceProviderUser" required>
+        <label for="pass"><b>Key</b></label>
+        <input type="text" placeholder="Enter Password" name="pass" id="ServiceProviderPass" required>
         <button type="buttserviceProvider">Login</button>
       </div>
     </form>
@@ -159,5 +128,31 @@
   $("#cancelRegistrationBtn").click(function () {
     location.reload();
   });
+  $("#frontDeskLogin").click(function () {
+    alert("button was clicked");
+    var userData = {
+      email: $("#frontDeskUser").val(),
+      password: $("#frontDeskPass").val()
+    };
+    console.log("*&***&&&**^U^",userData);
+    if (!userData.email || !userData.password) {
+      console.log("username or key missing");
+      return;
+    }
+    //console.log("*&***&&&**^U^",userData);
 
+    loginDesktop(userData.email, userData.password);
+    $("#frontDeskUser").val("");
+    $("#frontDeskPass").val("");
+  });
+
+  function loginDesktop(username, password) {
+
+    if (username == 'arnab' && password == '1') {
+      window.location.href = "/frontdesk";
+    }
+    else {
+      console.log("Something doesn't match our data");
+    }
+  }
 </script>
