@@ -14,15 +14,6 @@ var passport = require("./config/passport");
 
 var db = require("./models");
 
-
-
-const accountSid = 'AC6c056307e73f78bf2dafa38531ec18b2';
-const authToken = 'c94e8baaaceadab955ed912ddeb472f5';
-const client = require('twilio')(accountSid, authToken);
-
-
-
-
 var app = express();
 var PORT = process.env.PORT || 3000;
 
@@ -34,21 +25,6 @@ app.use(express.static("public"));
 app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
-
-// for login
-// passport.serializeUser(function(user, done) {
-//   done(null, user.id);
-// });
-
-// passport.deserializeUser(function(id, done) {
-//   User.findById(id, function(err, user) {
-//     done(err, user);
-//   });
-// });
-// 
-
-
-
 
 // Handlebars
 app.engine(

@@ -77,9 +77,14 @@
 
     $("#makeAppointmentBtn").click(function () {
         var dateTime = document.querySelector('input[type="datetime-local"]');
-        //var SSP= $("SSP select").val();
-
-        console.log(dateTime.value);
+        console.log('about to hit get request fro twillio', dateTime.value);
+        var textBody = "Your Reservation with ADAM-FrontDesk is on "+dateTime.value;
+        var number = '+14018718377'
+        $.get('/send/twilio/' + number, textBody, function (data) {
+            console.log("twilio" + data + textBody);
+            alert("Confirmation Text Sent");
+            location.reload();
+        });
 
 
     });
