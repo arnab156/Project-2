@@ -55,6 +55,7 @@ module.exports = function (app) {
     db.ServiceProvider.findAll({}).then(function (data) {
       console.log('this is our stufff in api route service provider', data);
       res.json(data);
+
     })
   });
 
@@ -102,9 +103,30 @@ module.exports = function (app) {
 
   // Create a new appointment
   app.post("/api/appointments/", function (req, res) {
+    console.log("i am here in apirou773647634 ", req);
     db.Appointment.create(req.body).then(function (createdAppointment) {
       res.json(createdAppointment);
+      console.log("we are in api route appointment", req.body.number);
+      // Download the helper library from https://www.twilio.com/docs/node/install
+      // Your Account Sid and Auth Token from twilio.com/console
+      const accountSid = 'AC6c056307e73f78bf2dafa38531ec18b2';
+      const authToken = 'c94e8baaaceadab955ed912ddeb472f5';
+      const client = require('twilio')(accountSid, authToken);
+
+      client.messages
+        .create({
+          body: 'This is the ship that made the Kessel Run in fourteen parsecs?',
+          from: '+13129671805',
+          to: req.body.number,
+          body: req.body.msg
+        })
+        .then(message => console.log('got this from clioent message', message.sid))
+        .done();
+
+
     });
+
+
   });
   // Get all appointments 
   app.get("/api/appointments", function (req, res) {
@@ -122,6 +144,7 @@ module.exports = function (app) {
 
   app.get('/send/twilio/:number', function (req, res) {
     console.log('we hit the route!!', req.params)
+
     // Download the helper library from https://www.twilio.com/docs/node/install
     // Your Account Sid and Auth Token from twilio.com/console
     const accountSid = 'AC6c056307e73f78bf2dafa38531ec18b2';
@@ -135,7 +158,7 @@ module.exports = function (app) {
         to: req.params.number,
         body: 'from twilio thee is a msgejkbjerg'
       })
-      .then(message => console.log('got this from clioent message',message.sid))
+      .then(message => console.log('got this from clioent message', message.sid))
       .done();
 
   });

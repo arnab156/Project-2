@@ -76,17 +76,40 @@
     });
 
     $("#makeAppointmentBtn").click(function () {
-        var dateTime = document.querySelector('input[type="datetime-local"]');
-        console.log('about to hit get request fro twillio', dateTime.value);
-        var textBody = "Your Reservation with ADAM-FrontDesk is on "+dateTime.value;
-        var number = '+14018718377'
-        $.get('/send/twilio/' + number, textBody, function (data) {
-            console.log("twilio" + data + textBody);
-            alert("Confirmation Text Sent");
-            location.reload();
-        });
+        var $dateTime = document.querySelector('input[type="datetime-local"]');
+        var $selectedSSP = $("#SSP option:selected").text();
+        var $greeting = '{{firstName}}'
+        var $textBody = 'Hello ' + $greeting + ', your appointment time is on ' + $dateTime.value + ' with ' + $selectedSSP;
+        console.log($textBody); //working
+        var $number = '{{phone}}'
 
+        var newAppointment = {
+            firstname: $greeting,
+            number: $number,
+            selectedServiceProvider: $selectedSSP,
+            dateTime: $dateTime.value,
+            msg: $textBody
+        }
+        submitAppointment(newAppointment);
+
+        function submitAppointment(newAppointment) {
+            console.log("function is working", newAppointment);
+            $.post("/api/appointments/", newAppointment, function (result) {
+                console.log(result, "this is from submit appointment in customer comeplete after POST");
+            });
+        }
+
+        //$.get('/send/twilio/' + $number, function (data) {
+        // console.log("twilio" + data );
+        //alert("Confirmation Text Sent");
+        // location.reload();
+        //});
 
     });
+
+
+
+
+
 
 </script>

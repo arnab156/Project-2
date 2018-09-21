@@ -8,31 +8,23 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      customerId: {
-        type: Sequelize.INTEGER
+      firstName: {
+        type: Sequelize.STRING
       },
-      serviceProviderId: {
-        type: Sequelize.INTEGER
+      number: {
+        type: Sequelize.STRING
       },
       service: {
         type: Sequelize.STRING
       },
+      selectedServiceProvider: {
+        type: DataTypes.STRING
+      },
       dateTime: {
-        type: Sequelize.DATE
+        type: DataTypes.DATE
       },
-      price: {
-        type: Sequelize.STRING
-      },
-      comment: {
-        type: Sequelize.TEXT
-      },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
+      msg: {
+        type: DataTypes.STRING
       }
     });
   },
