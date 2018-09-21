@@ -24,7 +24,7 @@ const client = require('twilio')(accountSid, authToken);
 
 
 var app = express();
-var PORT = process.env.PORT || 3000;
+var PORT = process.env.PORT || 3006;
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
