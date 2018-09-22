@@ -1,9 +1,10 @@
 {
   "development": {
-    "username": "root",
-    "password": "Letmein@156",
-    "database": "testdb",
-    "host": "localhost",
+    "username": "lbdalnqnzfvbubax",
+    "password": "y0k2c1qqqtcmwo05",
+    "database": "i3s7rasuhghtecci",
+    "host": "qbct6vwi8q648mrn.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    "port": 3306,
     "dialect": "mysql"
   },
   "test": {
