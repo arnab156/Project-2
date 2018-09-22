@@ -15,7 +15,9 @@ var passport = require("./config/passport");
 var db = require("./models");
 
 var app = express();
+
 var PORT = process.env.PORT || 3306;
+
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
