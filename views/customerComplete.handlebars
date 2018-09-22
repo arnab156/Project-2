@@ -96,6 +96,8 @@
             console.log("function is working", newAppointment);
             $.post("/api/appointments/", newAppointment, function (result) {
                 console.log(result, "this is from submit appointment in customer comeplete after POST");
+                alert("Text Sent! Appointment Confirmed");
+                location.reload();
             });
         }
     });
