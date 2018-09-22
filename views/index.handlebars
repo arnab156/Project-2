@@ -78,10 +78,10 @@
       <p>FRONT DESK LOG IN ONLY.</p>
       <div>
         <label for="frontDeskName"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" value = "arnab" name="frontDeskName" id="frontDeskUser" class="member-name"
+        <input type="text" placeholder="Enter Username" value="arnab" name="frontDeskName" id="frontDeskUser" class="member-name"
           required>
         <label for="frontDeskPass"><b>Key</b></label>
-        <input type="password" placeholder="Enter Password" name="frontDeskPass" id="frontDeskPass" required>
+        <input type="text" placeholder="Enter Password" name="frontDeskPass" id="frontDeskPass" required>
         <button type="button" id="frontDeskLogin">Login</button>
       </div>
     </form>
@@ -92,14 +92,14 @@
     <form id="serviceProviderLoginForm" class="form">
       <p>SERVICE PROVIDER LOG IN </p>
       <div>
-        <label for="uname"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="uname" id="ServiceProviderUser" required>
-        <label for="pass"><b>Key</b></label>
-        <input type="text" placeholder="Enter Password" name="pass" id="ServiceProviderPass" required>
-        <button type="buttserviceProvider">Login</button>
+        <label for="serviceProviderInput"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="serviceProviderInput" id="serviceProviderInput" required>
+        <label for="ServiceProviderPass"><b>Key</b></label>
+        <input type="text" placeholder="Enter Password" name="ServiceProviderPass" id="ServiceProviderPass" required>
+        <button type ="button" id="serviceProviderBtn">Login</button>
       </div>
     </form>
-    <p><button id="ServiceProviderForgot" class="btnBlack">Forgot Password?</button></p>
+    {{!-- <p><button id="ServiceProviderForgot" class="btnBlack">Forgot Password?</button></p> --}}
   </div>
 
 
@@ -124,14 +124,14 @@
     location.reload();
   });
   $("#frontDeskLogin").click(function () {
-    alert("button was clicked");
+    //alert("button was clicked");
     var userData = {
       email: $("#frontDeskUser").val(),
       password: $("#frontDeskPass").val()
     };
-    console.log("*&***&&&**^U^",userData);
+    //console.log("*&***&&&**^U^",userData);
     if (!userData.email || !userData.password) {
-      console.log("username or key missing");
+      //console.log("username or key missing");
       return;
     }
     //console.log("*&***&&&**^U^",userData);
@@ -150,4 +150,39 @@
       console.log("Something doesn't match our data");
     }
   }
+
+
+
+  $("#serviceProviderBtn").click(function () {
+    //alert("button was clicked");
+    var userData = {
+      email: $("#serviceProviderInput").val(),
+      password: $("#ServiceProviderPass").val()
+    };
+    //console.log("*&***&&&**^U^",userData);
+    if (!userData.email || !userData.password) {
+      //console.log("username or key missing");
+      return;
+    }
+    //console.log("*&***&&&**^U^",userData);
+
+    loginSP(userData.email, userData.password);
+    $("#serviceProviderInput").val("");
+    $("#ServiceProviderPass").val("");
+  });
+
+
+
+  function loginSP(username, password) {
+
+    if (username == 'arnab' && password == '2') {
+      //alert("success");
+      window.location.href = "/serviceproviders";
+    }
+    else {
+      console.log("Something doesn't match our data");
+    }
+  }
+
+
 </script>

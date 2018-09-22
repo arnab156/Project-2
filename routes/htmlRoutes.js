@@ -47,31 +47,8 @@ module.exports = function (app) {
           zip: data[0].dataValues.zip,
           state: data[0].dataValues.state,
         });
-
     });
-
-    // db.ServiceProvider.findAll({}).then(function (ServiceProvider) {
-    //   res.render("customerComplete", {
-    //     serviceprovider: ServiceProvider,
-    //     title: ServiceProvider.title,
-    //     firstName_SP: ServiceProvider.firstName,
-    //   });
-    // });
-
-
-
-
-
   });
-
-  // app.get("/api/customerComplete", function(req, res) {
-  //   // if (req.user) {
-  //   //   res.redirect("../views/customer.handlebars");
-  //   // }
-  //   res.render(path.join(__dirname, "../views/customerComplete"));
-  // });
-
-
 
   app.get("/login", function (req, res) {
     // If the user already has an account send them to the members page
@@ -151,6 +128,11 @@ module.exports = function (app) {
   // app.get("/", function(req, res) {
   //   res.render("index");
   // });
+
+  app.get("/serviceproviders", function (req, res) {
+    res.render("serviceProvider");
+  });
+
 
   app.get("/frontdesk", function (req, res) {
 

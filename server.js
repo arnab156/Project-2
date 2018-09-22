@@ -14,17 +14,10 @@ var passport = require("./config/passport");
 
 var db = require("./models");
 
-
-
-const accountSid = 'AC6c056307e73f78bf2dafa38531ec18b2';
-const authToken = 'c94e8baaaceadab955ed912ddeb472f5';
-const client = require('twilio')(accountSid, authToken);
-
-
-
-
 var app = express();
-var PORT = process.env.PORT || 3006;
+
+var PORT = process.env.PORT || 3306;
+
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -34,21 +27,6 @@ app.use(express.static("public"));
 app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
-
-// for login
-// passport.serializeUser(function(user, done) {
-//   done(null, user.id);
-// });
-
-// passport.deserializeUser(function(id, done) {
-//   User.findById(id, function(err, user) {
-//     done(err, user);
-//   });
-// });
-// 
-
-
-
 
 // Handlebars
 app.engine(
@@ -83,26 +61,5 @@ db.sequelize.sync(syncOptions).then(function() {
     );
   });
 });
-
-
-
-
-// Download the helper library from https://www.twilio.com/docs/node/install
-// Your Account Sid and Auth Token from twilio.com/console
-
-// const accountSid = TWILIO_ACCOUNT_SID;
-// const authToken = TWILIO_AUTH_TOKEN;
-// const client = require('twilio')(accountSid, authToken);
-
-// client.messages
-//   .create({
-//      body: 'This is the ship that made the Kessel Run in fourteen parsecs?',
-//      from: TWILIO_PHONE_NUMBER,
-//      to: '+'
-//    })
-//   .then(message => console.log(message.sid))
-//   .done();
-
-
 
 module.exports = app;

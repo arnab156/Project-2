@@ -76,12 +76,28 @@
     });
 
     $("#makeAppointmentBtn").click(function () {
-        var dateTime = document.querySelector('input[type="datetime-local"]');
-        //var SSP= $("SSP select").val();
+        var $dateTime = document.querySelector('input[type="datetime-local"]');
+        var $selectedSSP = $("#SSP option:selected").text();
+        var $greeting = '{{firstName}}'
+        var $textBody = 'Hello ' + $greeting + ', your appointment time is on ' + $dateTime.value + ' with ' + $selectedSSP;
+        console.log($textBody); //working
+        var $number = '{{phone}}'
 
-        console.log(dateTime.value);
+        var newAppointment = {
+            firstname: $greeting,
+            number: $number,
+            selectedServiceProvider: $selectedSSP,
+            dateTime: $dateTime.value,
+            msg: $textBody
+        }
+        submitAppointment(newAppointment);
 
-
+        function submitAppointment(newAppointment) {
+            console.log("function is working", newAppointment);
+            $.post("/api/appointments/", newAppointment, function (result) {
+                console.log(result, "this is from submit appointment in customer comeplete after POST");
+            });
+        }
     });
 
 </script>
