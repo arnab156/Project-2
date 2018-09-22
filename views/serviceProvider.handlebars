@@ -1,0 +1,30 @@
+<div id="allAppointments" >
+    <h1> Welcome, Service Providers</h1>
+</div>
+
+<br><br><br><br><br><br>
+
+
+<div class="footer">
+    <a href="#ex5" rel="modal:open"><button class="btn" id="createAvailability"> + Availability</button></a>;
+    <button class="btn" id="customerLogoutBtn"><a href="/logout">Log-out</a></button>;
+</div>
+
+
+<script>
+
+    $(document).ready(function () {
+        $.get('/api/appointments', function (data) {
+            console.log('this is dudes we got back!!!', data);
+            for (var i = 0; i < data.length; i++) {
+                $('#allAppointments').append($('<h3/>').text(data[i].id));
+                $('#allAppointments').append($('<p/>').text(data[i].firstName));
+                $('#allAppointments').append($('<p/>').text(data[i].number));
+                $('#allAppointments').append($('<h5 style ="color:red; font-size:30px;"/>').text(data[i].selectedServiceProvider));
+                $('#allAppointments').append($('<p/>').text(data[i].dateTime));
+                $('#allAppointments').append($('<p/>').text(data[i].msg));
+            }
+        });
+
+    });
+</script>

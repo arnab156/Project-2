@@ -2,7 +2,7 @@
   {{#each serviceprovider}}
 
   <div class="card_fd">
-    <div ><img class="img_fd" src={{url}}  alt="Avatar"></div>
+    <div><img class="img_fd" src={{url}} alt="Avatar"></div>
 
     <div class="container_fd">
       <p><b>{{title}}</b></p>
@@ -15,11 +15,10 @@
 <br><br><br><br>
 
 <div class="footer">
-  <a href="#ex2" rel="modal:open"><button class="btn" id="viewClientsBtn"> Clients</button></a>;
-  {{!-- <a href="#ex1" rel="modal:open"><button class="btn" id="viewServiceBtn"> Services</button></a>; --}}
+  <a href="#ex2" rel="modal:open"><button class="btn" id="viewApptBtn"> Appointments</button></a>;
   <a href="#ex3" rel="modal:open"><button class="btn" id="addProviderBtn"> + Provider</button></a>;
   <a href="#ex5" rel="modal:open"><button class="btn" id="createAvailability"> + Availability</button></a>;
-  <a href="#ex4" rel="modal:open"><button class="btn" id="addServiceBtn"> + Service</button></a>;
+  <a href="#ex1" rel="modal:open"><button class="btn" id="addServiceBtn">( - )Appt</button></a>;
   <button class="btn" id="customerLogoutBtn"><a href="/logout">Log-out</a></button>;
 
 
@@ -46,14 +45,19 @@
 
 
 <div id="ex1" class="modal modal-style">
-  <h2>LIST OF SERVICES</h2>
+  <h2>Delete an Appointment</h2>
+  <label for="delApptNum">Select an appointment number: </label>
+  <input type="text" placeholder="Enter Appointment #" name="delApptNum" id="delApptNum" required>
+  <button type="button" id="delApptBtn" class="btn">Delete</button>
 </div>
 
 <div id="ex2" class="modal modal-style">
-  <h2>LIST OF CLIENTS</h2>
+
+  <div id="allAppointments">
+    <h2>LIST OF Appointments</h2>
+  </div>
 
 
-  
 </div>
 
 <div id="ex3" class="modal modal-style">
@@ -70,7 +74,8 @@
       <input type="text" placeholder="Hair Stylist" name="title" id="title" required>
 
       <label for="url"><b>Image URL</b></label>
-      <input type="text" placeholder="Hair Stylist" name="url" id="url" value="https://pixel.nymag.com/imgs/daily/vulture/2018/09/05/mac-miller/04-mac-miller-2.w570.h712.jpg" required>
+      <input type="text" placeholder="Hair Stylist" name="url" id="url" value="https://pixel.nymag.com/imgs/daily/vulture/2018/09/05/mac-miller/04-mac-miller-2.w570.h712.jpg"
+        required>
 
       <label for="add1"><b>Address Line 1</b></label>
       <input type="text" placeholder="Address Line 1" name="add1" id="address_1" required>
@@ -97,7 +102,7 @@
       <input type="text" placeholder="Enter Password" name="psw" id="password" required>
 
       <button type="submit" id="providerAddBtn">Submit</button>
-      {{!-- <button rel="modal:close" type="button" id="providerCancelBtn">Cancel</button> --}}
+
     </div>
   </form>
 </div>
@@ -150,7 +155,7 @@
         email: $email.val().trim(),
         password: $password.val().trim(),
       };
-      
+
       submitnewServiceProvider(newServiceProvider);
       location.reload();
     }
@@ -163,16 +168,42 @@
     }
 
 
-  $.get('/api/serviceproviders', function (data) {
-    console.log('this is dudes we got back!!!', data);
-    for (var i = 0; i < data.length; i++) {
-      $('#SSP').append($('<option/>').val('').text(data[i].firstName));
-    }
+    $.get('/api/serviceproviders', function (data) {
+      console.log('this is dudes we got back!!!', data);
+      for (var i = 0; i < data.length; i++) {
+        $('#SSP').append($('<option/>').val('').text(data[i].firstName));
+      }
 
-  });
+    });
 
-//create get route to go to routes and pull customer information
-//& then append it with a loop of data.length
+    $.get('/api/appointments', function (data) {
+      console.log('this is dudes we got back!!!', data);
+      for (var i = 0; i < data.length; i++) {
+        $('#allAppointments').append($('<h3/>').text(data[i].id));
+        $('#allAppointments').append($('<p/>').text(data[i].firstName));
+        $('#allAppointments').append($('<p/>').text(data[i].number));
+        $('#allAppointments').append($('<h5 style ="color:red; font-size:30px;"/>').text(data[i].selectedServiceProvider));
+        $('#allAppointments').append($('<p/>').text(data[i].dateTime));
+        $('#allAppointments').append($('<p/>').text(data[i].msg));
+      }
+    });
+
+    $("#delApptBtn").click(function () {
+      var apptNum = $("#delApptNum").val();
+      console.log("inside the del appt btn", apptNum);
+      $.ajax('/api/appointments/' + apptNum, {
+        type: "DELETE"
+      }).then(
+        function () {
+          console.log("deleted appointment", apptNum);
+          location.reload();
+        }
+      );
+    });
+
+
+    //create get route to go to routes and pull customer information
+    //& then append it with a loop of data.length
 
   });
 

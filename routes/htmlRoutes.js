@@ -129,6 +129,11 @@ module.exports = function (app) {
   //   res.render("index");
   // });
 
+  app.get("/serviceproviders", function (req, res) {
+    res.render("serviceProvider");
+  });
+
+
   app.get("/frontdesk", function (req, res) {
 
 
