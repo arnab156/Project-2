@@ -43,6 +43,14 @@ PLEASE NOTE THAT THE APP USES A TRIAL VERSION OF TRELLO AND WOULD REQUIRE US TO 
 In the service provider view:
   1. service providers can see all appointments that have been scheduled.
   2. Log out of the service provider view. 
+  
+---------------------------------------------------------------------------------------  
+  
+  TECHNOLOGIES USED:
+  1. Passport Authentication
+  2. HTML, CSS
+  3. Express, Sequelize and MySQL.
+  
       
       
           
